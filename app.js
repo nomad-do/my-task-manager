@@ -1,7 +1,10 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const userRoutes = require('./routes/userRoutes');
 const storyRoutes = require('./routes/storyRoutes');
+const chapterRoutes = require('./routes/chapterRoutes');
+
 
 const mongoose = require('mongoose');
 
@@ -13,6 +16,7 @@ app.use(express.json());
 
 app.use('/api/users', userRoutes);
 app.use('/api/stories', storyRoutes);
+app.use('/api/chapters', chapterRoutes);
 
 // ... use other routes ...
 
