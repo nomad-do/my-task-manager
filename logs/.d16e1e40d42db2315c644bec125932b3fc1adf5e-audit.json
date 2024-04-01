@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "D:\\IT\\project\\My-Story-Project_240318\\logs\\.d16e1e40d42db2315c644bec125932b3fc1adf5e-audit.json",
+    "files": [
+        {
+            "date": 1711278612309,
+            "name": "D:\\IT\\project\\My-Story-Project_240318\\logs\\2024-03-24.exception.log",
+            "hash": "44aacd9d119c8efb4704138123510242871e9276eb5b1c3881faf9779c26ba1c"
+        }
+    ],
+    "hashType": "sha256"
+}

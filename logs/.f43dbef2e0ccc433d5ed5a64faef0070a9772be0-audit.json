@@ -1,0 +1,25 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "C:\\myNodeProject\\My-Story-Project_240318\\logs\\.f43dbef2e0ccc433d5ed5a64faef0070a9772be0-audit.json",
+    "files": [
+        {
+            "date": 1711084577643,
+            "name": "C:\\myNodeProject\\My-Story-Project_240318\\logs\\2024-03-22.log",
+            "hash": "f6f363fdd7a615523068fc9444438aa22783a88bb78f6d96efabe9a5389706fd"
+        },
+        {
+            "date": 1711196598342,
+            "name": "C:\\myNodeProject\\My-Story-Project_240318\\logs\\2024-03-23.log",
+            "hash": "1a93b137b8de5cb660bd5b6d752b4f4d4b6a0b118012dda8e8a8a2340fd2f38f"
+        },
+        {
+            "date": 1711235980566,
+            "name": "C:\\myNodeProject\\My-Story-Project_240318\\logs\\2024-03-24.log",
+            "hash": "24bfa2ad21b72557ef7de90a84873129e721d5d47ea98adcfb1c53b11e92a069"
+        }
+    ],
+    "hashType": "sha256"
+}

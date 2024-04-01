@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "D:\\IT\\project\\blue-sky-master\\logs\\error\\.21e193c2009f91516ef8271735ddbf1f729ca8d6-audit.json",
+    "files": [
+        {
+            "date": 1711317308599,
+            "name": "D:\\IT\\project\\blue-sky-master\\logs\\error\\2024-03-25.error.log",
+            "hash": "931f5c64f6544fd974e5d6807ea6a94b8d69e59854537506a6829e8ceb1071ea"
+        },
+        {
+            "date": 1711417718689,
+            "name": "D:\\IT\\project\\blue-sky-master\\logs\\error\\2024-03-26.error.log",
+            "hash": "dddb2c45ba4c0ec4e86e07e15189b4e2e94add8b6508187bc69f6069bc2df942"
+        }
+    ],
+    "hashType": "sha256"
+}

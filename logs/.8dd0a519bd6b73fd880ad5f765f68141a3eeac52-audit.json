@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "C:\\myNodeProject\\blue-sky-master\\logs\\.8dd0a519bd6b73fd880ad5f765f68141a3eeac52-audit.json",
+    "files": [
+        {
+            "date": 1711840683162,
+            "name": "C:\\myNodeProject\\blue-sky-master\\logs\\2024-03-31.exception.log",
+            "hash": "b3228842275df726e970f46ff4cb9ada33d5f23ba12720fd165ebd0db8f91fd6"
+        },
+        {
+            "date": 1711969484551,
+            "name": "C:\\myNodeProject\\blue-sky-master\\logs\\2024-04-01.exception.log",
+            "hash": "95ff7d848c6f7d9d69753b3087bedda206f83d8ccb597f33dce2a8cbafc008a3"
+        }
+    ],
+    "hashType": "sha256"
+}

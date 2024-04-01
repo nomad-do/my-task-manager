@@ -1,0 +1,25 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "C:\\ldw\\My-Story-Project\\logs\\error\\.afa0eb72dd80d5557e13602e9ff5ee0107fe4b5e-audit.json",
+    "files": [
+        {
+            "date": 1710741726877,
+            "name": "C:\\ldw\\My-Story-Project\\logs\\error\\2024-03-18.error.log",
+            "hash": "0904bbc15d9da68c8345c1abfe57e11d520cd0f2df3c443d9602517c56cb617b"
+        },
+        {
+            "date": 1710801368129,
+            "name": "C:\\ldw\\My-Story-Project\\logs\\error\\2024-03-19.error.log",
+            "hash": "334b47f808e33d3fa0d1c73e785969da29d33a849684ef5a89ecbdde3af1963c"
+        },
+        {
+            "date": 1710910976577,
+            "name": "C:\\ldw\\My-Story-Project\\logs\\error\\2024-03-20.error.log",
+            "hash": "0eb749bdf31020a740829fcea28b81791849a1c9000d9fffcc7dda3094e810b5"
+        }
+    ],
+    "hashType": "sha256"
+}
