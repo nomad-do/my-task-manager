@@ -14,6 +14,11 @@
             "date": 1711969484551,
             "name": "C:\\myNodeProject\\blue-sky-master\\logs\\2024-04-01.exception.log",
             "hash": "95ff7d848c6f7d9d69753b3087bedda206f83d8ccb597f33dce2a8cbafc008a3"
+        },
+        {
+            "date": 1712045361529,
+            "name": "C:\\myNodeProject\\blue-sky-master\\logs\\2024-04-02.exception.log",
+            "hash": "d75b8071a11e75fd64069d66e7cfbf40e8f4b2892e241f36d40bebf60e786958"
         }
     ],
     "hashType": "sha256"
