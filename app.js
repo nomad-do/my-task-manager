@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 const userRoutes = require('./routes/userRoutes');
-const storyRoutes = require('./routes/storyRoutes');
 const chapterRoutes = require('./routes/chapterRoutes');
 const authRoutes = require('./routes/authRoutes');
 
@@ -13,8 +12,8 @@ const newId = new mongoose.Types.ObjectId();
 console.log(newId); // This will log a new unique ObjectID
 
 app.use('/api/users', userRoutes);
-app.use('/api/stories', storyRoutes);
-app.use('/api/chapters', chapterRoutes);
+// app.use('/api/stories', storyRoutes);
+// app.use('/api/chapters', chapterRoutes);
 app.use('/auth', authRoutes);
 
 const logger = require("./config/logger");
@@ -51,6 +50,8 @@ app.listen(3000, () => {
   console.log("Serving on port 3000");
 });
 
+// Remove or comment out this line if you are sure it's not needed anymore
+// const storyRoutes = require('./routes/storyRoutes');
 
 
 
