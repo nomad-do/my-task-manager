@@ -12,8 +12,9 @@ function App() {
     }, []);
 
     const fetchTasks = async () => {
+        const apiUrl = process.env.REACT_APP_API_URL;  // Using the environment variable
         try {
-            const response = await fetch('http://localhost:3001/api/tasks');
+            const response = await fetch(`${apiUrl}/tasks`); // Modified to use apiUrl variable
             if (response.ok) {
                 const data = await response.json();
                 setTasks(data);
@@ -30,5 +31,3 @@ function App() {
         </div>
     );
 }
-
-export default App;
