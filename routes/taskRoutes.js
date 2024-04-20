@@ -1,21 +1,28 @@
-// routes/taskRoutes.js
 const express = require('express');
 const router = express.Router();
-const taskController = require('../controllers/taskController');
+const Task = require('../models/Task');// Correct the path if necessary and ensure it points to Task model
 
-// POST /api/tasks - Create a new task
-router.post('/', taskController.createTask);
+// GET all tasks
+router.get('/tasks', async (req, res) => {
+    try {
+        const tasks = await Task.find();
+        res.json(tasks);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
 
-// GET /api/tasks - Get all tasks
-router.get('/', taskController.getAllTasks);
-
-// GET /api/tasks/:id - Get a task by ID
-router.get('/:id', taskController.getTaskById);
-
-// PUT /api/tasks/:id - Update a task by ID
-router.put('/:id', taskController.updateTask);
-
-// DELETE /api/tasks/:id - Delete a task by ID
-router.delete('/:id', taskController.deleteTask);
+// POST a new task
+router.post('/tasks', async (req, res) => {
+    const task = new Task({
+        text: req.body.text
+    });
+    try {
+        const newTask = await task.save();
+        res.status(201).json(newTask);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+});
 
 module.exports = router;

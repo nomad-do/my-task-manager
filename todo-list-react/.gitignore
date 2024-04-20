@@ -24,3 +24,6 @@ yarn-error.log*
 
 /build
 .env
+
+src/reportWebVitals.js
+src/index.css

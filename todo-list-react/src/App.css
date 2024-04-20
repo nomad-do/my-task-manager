@@ -35,3 +35,48 @@ li:hover {
   text-decoration: line-through;
   color: #999;
 }
+
+/* Added Rating component styles */
+.rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem 0; /* Margin added for spacing around the rating component */
+}
+
+.rating-star {
+  cursor: pointer;
+  color: #ffc107; /* Gold color for the stars */
+  margin: 0 5px; /* Add some space between stars */
+}
+
+.rating-star:hover {
+  color: #ffeb3b; /* Lighter gold color on hover */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .app {
+    padding: 0.5rem;
+  }
+
+  input, button {
+    width: 100%; /* Full width on smaller screens */
+    margin: 0.5rem 0; /* Stack input and button vertically with space */
+  }
+
+  .rating {
+    justify-content: flex-start; /* Align stars to the start on smaller screens */
+  }
+}
+
+/* Media query for very small screens */
+@media (max-width: 576px) {
+  .app {
+    margin: 1rem auto;
+  }
+
+  .rating-star {
+    margin: 0 3px; /* Reduce space between stars on very small screens */
+  }
+}

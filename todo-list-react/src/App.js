@@ -14,7 +14,7 @@ function App() {
     };
 
     const toggleTodo = (id) => {
-        const newTodos = todos.map(todo => {
+        const newTodos = todos.map(todo => {            
             if (todo.id === id) {
                 return {...todo, completed: !todo.completed};
             }
