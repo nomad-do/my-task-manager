@@ -3,8 +3,8 @@
 *.css text eol=lf
 *.html text eol=lf
 *.scss text eol=lf
-*.java text eol=lf  # If you have Java files
-*.py text eol=lf    # If you have Python scripts
+*.java text eol=lf  
+*.py text eol=lf    
 
 # Binary files
 *.png binary
