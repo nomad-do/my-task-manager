@@ -1,2 +1,12 @@
 * text=auto
+*.js text eol=lf
+*.css text eol=lf
+*.html text eol=lf
 *.scss text eol=lf
+*.java text eol=lf  # If you have Java files
+*.py text eol=lf    # If you have Python scripts
+
+# Binary files
+*.png binary
+*.jpg binary
+*.gif binary
