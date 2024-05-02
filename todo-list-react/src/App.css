@@ -80,3 +80,25 @@ li:hover {
     margin: 0 3px; /* Reduce space between stars on very small screens */
   }
 }
+
+.rating-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rating-section .total-score {
+  flex-basis: 100%;  /* Makes sure it appears below all ratings on small screens */
+  text-align: right; /* Aligns the total score to the right */
+}
+
+@media (min-width: 768px) {
+  .rating-section {
+      justify-content: start;
+  }
+
+  .rating-section .total-score {
+      flex-basis: auto;
+  }
+}

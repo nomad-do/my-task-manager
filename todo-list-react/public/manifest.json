@@ -24,16 +24,18 @@
   "background_color": "#ffffff",
   "screenshots": [
     {
-      "src": "/screenshot-desktop.png",
-      "sizes": "1024x640",
+      "src": "screenshot-desktop.png",
+      "sizes": "1920x1080",
       "type": "image/png",
-      "label": "Homepage wide screenshot"
+      "label": "Homepage wide screenshot",
+      "platform": "wide"
     },
     {
-      "src": "/screenshot-mobile.png",
-      "sizes": "640x1024",
+      "src": "screenshot-mobile.png",
+      "sizes": "640x1136",
       "type": "image/png",
-      "label": "Homepage mobile screenshot"
+      "label": "Homepage mobile screenshot",
+      "platform": "narrow"
     }
   ]
 }

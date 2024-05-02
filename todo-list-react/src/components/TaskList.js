@@ -1,26 +1,18 @@
 import React from 'react';
-import { ListGroup, Alert } from 'react-bootstrap';
-import TaskDetails from './TaskDetails';
-import Rating from './Rating';
 
-const TaskList = ({ tasks, onValueChange, onRate }) => {
-    // Display a message if there are no tasks
-    if (tasks.length === 0) {
-        return <Alert variant="info">No tasks to display.</Alert>;
-    }
+const TaskList = ({ tasks }) => {
+    // Create a new sorted array to avoid mutating the original tasks array directly
+    const sortedTasks = [...tasks].sort((a, b) => b.priority - a.priority); // Assuming higher priority number should be first
 
     return (
-        <ListGroup>
-            {tasks.map(task => (
-                <ListGroup.Item key={task._id} className="d-flex justify-content-between align-items-center">
-                    <TaskDetails task={task} onValueChange={onValueChange} />
-                    <Rating 
-                        value={task.priority} 
-                        onRate={(rating) => onRate(task._id, rating)}
-                    />
-                </ListGroup.Item>
+        <div>
+            {sortedTasks.map(task => (
+                <div key={task._id}>
+                    <h3>{task.title} - Total Score: {task.priority}</h3>
+                    <p>Urgency: {task.urgency}, Importance: {task.importance}, Effort: {task.effort}</p>
+                </div>
             ))}
-        </ListGroup>
+        </div>
     );
 };
 

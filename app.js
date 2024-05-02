@@ -72,6 +72,7 @@ const app = express();
 app.use(express.json());
 const cors = require('cors');
 const mongoose = require('mongoose');
+mongoose.set('strictQuery', true); 
 const logger = require('./config/logger');
 
 // Use cors middleware before your routes
@@ -97,7 +98,7 @@ mongoose.connect(process.env.MONGO_URI, {
 // Routes setup
 app.use('/api/users', userRoutes);
 app.use('/auth', authRoutes);
-app.use('/api/tasks', taskRoutes);  // Adjusted to match the RESTful API convention
+app.use('/api/tasks', taskRoutes);  // Adjusted to mount taskRoutes under the specific path /api/tasks
 
 // 404 Not Found Middleware
 app.use((req, res, next) => {
