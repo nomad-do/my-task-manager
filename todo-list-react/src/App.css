@@ -5,6 +5,13 @@
   text-align: center;
 }
 
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
 input {
   margin-right: 0.5rem;
   padding: 0.5rem;
@@ -36,48 +43,91 @@ li:hover {
   color: #999;
 }
 
-/* Added Rating component styles */
+/* Rating component styles */
 .rating {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.5rem 0; /* Margin added for spacing around the rating component */
+  margin: 0.5rem 0;
 }
 
 .rating-star {
   cursor: pointer;
-  color: #ffc107; /* Gold color for the stars */
-  margin: 0 5px; /* Add some space between stars */
+  color: #ffc107;
+  margin: 0 5px;
 }
 
 .rating-star:hover {
-  color: #ffeb3b; /* Lighter gold color on hover */
+  color: #ffeb3b;
 }
 
-/* Media query for smaller screens */
+/* Task list container styling */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* General task item styling */
+.task-item {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
+
+.highlight {
+  background-color: #ffff99;  /* Light yellow background */
+}
+
+/* Highlight the first task item with improved styles */
+.task-item.highlight {
+  background-color: #ffff99; /* Light yellow background for high priority */
+  border-color: #ffcc00; /* Golden border for emphasis */
+  font-weight: bold;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-item.highlight::before {
+  content: ""; /* Removing warning sign icon */
+}
+
+.task-item:not(.highlight) {
+  transition: background-color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.task-item.highlight:hover {
+  background-color: #ffffbf; /* Slightly lighter yellow on hover */
+}
+
+/* Media queries for responsive design */
 @media (max-width: 768px) {
   .app {
     padding: 0.5rem;
   }
 
   input, button {
-    width: 100%; /* Full width on smaller screens */
-    margin: 0.5rem 0; /* Stack input and button vertically with space */
+    width: 100%;
+    margin: 0.5rem 0;
   }
 
   .rating {
-    justify-content: flex-start; /* Align stars to the start on smaller screens */
+    justify-content: flex-start;
   }
 }
 
-/* Media query for very small screens */
 @media (max-width: 576px) {
   .app {
     margin: 1rem auto;
   }
 
   .rating-star {
-    margin: 0 3px; /* Reduce space between stars on very small screens */
+    margin: 0 3px;
   }
 }
 
@@ -89,16 +139,26 @@ li:hover {
 }
 
 .rating-section .total-score {
-  flex-basis: 100%;  /* Makes sure it appears below all ratings on small screens */
-  text-align: right; /* Aligns the total score to the right */
+  flex-basis: 100%;
+  text-align: right;
 }
 
 @media (min-width: 768px) {
   .rating-section {
-      justify-content: start;
+    justify-content: start;
   }
 
   .rating-section .total-score {
-      flex-basis: auto;
+    flex-basis: auto;
   }
+}
+
+.task-details {
+  font-size: 0.9em; /* Slightly smaller font size for details */
+  color: #666;
+}
+
+.task-score {
+  font-weight: bold;
+  margin-bottom: 5px; /* Adds space between the score and the details */
 }

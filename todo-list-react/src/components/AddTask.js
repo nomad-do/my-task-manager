@@ -1,57 +1,6 @@
-// import React, { useState } from 'react';
-// import { Form, Button, Alert } from 'react-bootstrap';
-// import axios from 'axios';
-
-// const AddTask = ({ onAdd }) => {
-//     const [title, setTitle] = useState('');
-//     const [error, setError] = useState(''); // State to handle any error message
-//     const [isSubmitting, setIsSubmitting] = useState(false); // State to handle the submit button
-
-//     const handleSubmit = async (e) => {
-//         e.preventDefault();
-//         if (!title) {
-//             setError('Title cannot be empty.'); // Set error state if title is empty
-//             return;
-//         }
-
-//         setIsSubmitting(true); // Disable the submit button to prevent multiple submissions
-//         try {
-//             const response = await axios.post('/api/tasks', { title });
-//             onAdd(response.data);
-//             setTitle('');
-//             setError(''); // Clear any previous errors
-//         } catch (error) {
-//             setError('Failed to add task. Please try again.'); // Set error state if request fails
-//             console.error('Error adding task:', error);
-//         }
-//         setIsSubmitting(false); // Re-enable the submit button
-//     };
-
-//     return (
-//         <>
-//             {error && <Alert variant="danger">{error}</Alert>} {/* Display an error message if error state is set */}
-//             <Form onSubmit={handleSubmit}>
-//                 <Form.Group>
-//                     <Form.Control
-//                         type="text"
-//                         placeholder="Enter task"
-//                         value={title}
-//                         onChange={(e) => setTitle(e.target.value)}
-//                     />
-//                 </Form.Group>
-//                 <Button variant="primary" type="submit" disabled={isSubmitting}>
-//                     Add Task
-//                 </Button>
-//             </Form>
-//         </>
-//     );
-// };
-
-// export default AddTask;
-
 import React, { useState } from 'react';
-import { FormControl, Button, Alert } from 'react-bootstrap';
-import Rating from './Rating'; // Ensure this path is correct
+import { Modal, Button, Alert, FormControl, Form } from 'react-bootstrap';
+import Rating from './Rating'; // Ensure this is correctly importing
 
 const AddTask = ({ onAddTask }) => {
     const [title, setTitle] = useState('');
@@ -59,6 +8,24 @@ const AddTask = ({ onAddTask }) => {
     const [importance, setImportance] = useState(1);
     const [effort, setEffort] = useState(1);
     const [error, setError] = useState('');
+    const [showModal, setShowModal] = useState(false);
+
+    // Handles changes from the Rating component
+    const handleRatingChange = (ratingType) => (value) => {
+        switch (ratingType) {
+            case 'urgency':
+                setUrgency(value);
+                break;
+            case 'importance':
+                setImportance(value);
+                break;
+            case 'effort':
+                setEffort(value);
+                break;
+            default:
+                break;
+        }
+    };
 
     const handleSubmit = async () => {
         if (!title.trim()) {
@@ -66,20 +33,25 @@ const AddTask = ({ onAddTask }) => {
             return;
         }
         setError('');
+
+        // Calculate total score
+        const totalScore = urgency + importance + effort; // Ensure all are numbers
+        const newTask = {
+            title,
+            urgency,
+            importance,
+            effort,
+            totalScore  // Include the calculated total score
+        };
+
+        // Attempt to add the task and handle the result
         try {
-            const totalScore = ((urgency + importance + effort) / 3).toFixed(2);
-            const newTask = {
-                title,
-                urgency,
-                importance,
-                effort,
-                totalScore
-            };
             await onAddTask(newTask);
             setTitle('');
             setUrgency(1);
             setImportance(1);
             setEffort(1);
+            setShowModal(false); // Close the modal after submitting the task
         } catch (error) {
             console.error('Failed to add task:', error);
             setError('Failed to add task. Please try again.');
@@ -87,20 +59,36 @@ const AddTask = ({ onAddTask }) => {
     };
 
     return (
-        <div className="task-form">
-            {error && <Alert variant="danger">{error}</Alert>}
-            <FormControl
-                type="text"
-                placeholder="Add a new todo"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className="mb-3"
-            />
-            <Rating label="Urgency" value={urgency} onRate={setUrgency} />
-            <Rating label="Importance" value={importance} onRate={setImportance} />
-            <Rating label="Effort" value={effort} onRate={setEffort} />
-            <Button onClick={handleSubmit} className="mt-2">Add Task</Button>
-        </div>
+        <>
+            <Button onClick={() => setShowModal(true)} className="mt-3">Add New Task</Button>
+            
+            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add a New Task</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {error && <Alert variant="danger">{error}</Alert>}
+                    <Form>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Title</Form.Label>
+                            <FormControl
+                                type="text"
+                                placeholder="Enter task title"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Rating label="Urgency" value={urgency} onRate={handleRatingChange('urgency')} />
+                        <Rating label="Importance" value={importance} onRate={handleRatingChange('importance')} />
+                        <Rating label="Effort" value={effort} onRate={handleRatingChange('effort')} />
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowModal(false)}>Close</Button>
+                    <Button variant="primary" onClick={handleSubmit}>Save Task</Button>
+                </Modal.Footer>
+            </Modal>
+        </>
     );
 };
 
