@@ -1,15 +1,18 @@
 import React from 'react';
 
 const TaskList = ({ tasks }) => {
-    // Assuming 'tasks' is already sorted based on priority
+    console.log(tasks);
     return (
         <div className="task-list">
             {tasks.map((task, index) => (
-                <div key={task._id} className={`task-item ${index === 0 ? 'highlight' : ''}`}>
-                    <div>{task.title} - Total Score: {task.priority}</div>
-                    <div className="task-details">
-                        Urgency: {task.urgency}, Importance: {task.importance}, Effort: {task.effort}
+                <div key={task.id || index} className={`task-item ${task.priority === 1 ? 'highlight' : ''}`}>
+                    <h3>{task.title}</h3>
+                    <div className="task-values">
+                        <p>Urgency: {task.urgency}</p>
+                        <p>Importance: {task.importance}</p>
+                        <p>Effort: {task.effort}</p>
                     </div>
+                    <p>Total Score: {task.urgency + task.importance + task.effort}</p>
                 </div>
             ))}
         </div>

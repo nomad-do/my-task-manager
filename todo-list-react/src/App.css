@@ -1,10 +1,24 @@
+/* Base Styling */
+html {
+  font-size: 16px; /* Establishes base font size for rem units */
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif; /* Ensures consistent typography */
+  background-color: #f0f0f0; /* Neutral background for minimal eye strain */
+}
+
+/* Application Container */
 .app {
   max-width: 600px;
   margin: 2rem auto;
   padding: 1rem;
   text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
+/* Input Container */
 .input-container {
   display: flex;
   justify-content: center;
@@ -13,15 +27,17 @@
 }
 
 input {
-  margin-right: 0.5rem;
+  flex-grow: 1;
   padding: 0.5rem;
-  width: 70%;
+  margin-right: 0.5rem;
 }
 
 button {
   padding: 0.5rem 1rem;
+  cursor: pointer;
 }
 
+/* List Styling */
 ul {
   list-style: none;
   padding: 0;
@@ -43,7 +59,7 @@ li:hover {
   color: #999;
 }
 
-/* Rating component styles */
+/* Rating Component */
 .rating {
   display: flex;
   justify-content: center;
@@ -61,51 +77,65 @@ li:hover {
   color: #ffeb3b;
 }
 
-/* Task list container styling */
+/* Task List */
 .task-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 0;
-  margin: 0;
+  padding: 20px; /* Padding around the entire list */
+  background-color: #f4f4f4; /* Slightly grey background for the list area */
 }
 
-/* General task item styling */
 .task-item {
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-  text-align: center;
+  margin-bottom: 20px; /* Adds space between tasks */
+  padding: 10px; /* Padding inside each task */
+  border: 1px solid #ccc; /* Defines a clear border for each task */
+  background-color: #fff; /* Sets a white background for tasks */
 }
 
-.highlight {
-  background-color: #ffff99;  /* Light yellow background */
+.task-item h3 {
+  color: #2a2a2a; /* Dark gray for better readability */
+  font-size: 1.5rem; /* Larger font size for task title */
+  margin-bottom: 10px;  /* Space between the title and the values row */
 }
 
-/* Highlight the first task item with improved styles */
-.task-item.highlight {
-  background-color: #ffff99; /* Light yellow background for high priority */
-  border-color: #ffcc00; /* Golden border for emphasis */
-  font-weight: bold;
-  color: black;
+.task-item p.total-score {
+  color: #4a90e2; /* A blue color for emphasis */
+  font-size: 1.25rem; /* Slightly larger font size for total score */
+  font-weight: bold; /* Makes the total score bold */
+}
+
+.task-details {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 
-.task-item.highlight::before {
-  content: ""; /* Removing warning sign icon */
-}
-
-.task-item:not(.highlight) {
-  transition: background-color 0.3s ease; /* Smooth transition for hover effects */
+/* Highlighting Priority Tasks */
+.task-item.highlight {
+  background-color: #ffff99;
+  border-color: #ffcc00;
+  font-weight: bold;
+  color: black;
 }
 
 .task-item.highlight:hover {
-  background-color: #ffffbf; /* Slightly lighter yellow on hover */
+  background-color: #ffffbf;
 }
 
-/* Media queries for responsive design */
+.task-item p {
+  margin: 0;            /* Removes default margin from paragraph elements */
+}
+
+.task-values {
+  display: flex;        
+  justify-content: space-between; /* Distributes space evenly between the items */
+  margin-bottom: 10px;  
+}
+
+.task-values p {
+  margin: 0 8px; /* Reduces space between values */
+}
+
+/* Media Queries for Responsive Design */
 @media (max-width: 768px) {
   .app {
     padding: 0.5rem;
@@ -113,7 +143,11 @@ li:hover {
 
   input, button {
     width: 100%;
-    margin: 0.5rem 0;
+    margin-top: 0.5rem;
+  }
+
+  .input-container {
+    flex-direction: column;
   }
 
   .rating {
@@ -131,34 +165,33 @@ li:hover {
   }
 }
 
-.rating-section {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+/* Accessibility Improvements */
+:focus {
+  outline: 3px solid #007BFF; /* Improves focus visibility */
 }
 
-.rating-section .total-score {
-  flex-basis: 100%;
-  text-align: right;
-}
-
-@media (min-width: 768px) {
-  .rating-section {
-    justify-content: start;
+/* Adjustments for High Contrast Mode */
+@media (prefers-contrast: high) {
+  body {
+    background-color: black;
+    color: white;
   }
 
-  .rating-section .total-score {
-    flex-basis: auto;
+  li, .task-item.highlight {
+    border-bottom-color: white;
+  }
+
+  .task-item.highlight {
+    background-color: yellow; /* Ensures visibility in high contrast mode */
+    color: black;
   }
 }
 
-.task-details {
-  font-size: 0.9em; /* Slightly smaller font size for details */
-  color: #666;
-}
-
-.task-score {
-  font-weight: bold;
-  margin-bottom: 5px; /* Adds space between the score and the details */
+@media (max-width: 768px) {
+  .task-item.highlight {
+      background-color: #ffff99; /* Ensure it stays the same or is adjusted appropriately */
+      border-color: #ffcc00; /* Keep consistent or adapt based on design needs */
+      font-weight: bold;
+      color: black;
+  }
 }

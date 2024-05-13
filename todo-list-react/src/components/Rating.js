@@ -1,40 +1,27 @@
-import React, { useState } from 'react';
-import { FaStar } from 'react-icons/fa';
+import React, { useState } from 'react';  // Import React and useState
+import { FaStar } from 'react-icons/fa';  // Import FaStar
 
 const Rating = ({ label, value, onRate }) => {
-  const [hover, setHover] = useState(null);
+    const [hover, setHover] = useState(null);  // useState hook in use
 
-  // Function to handle rating changes, ensures the rating is within the expected range
-  const handleRate = (ratingValue) => {
-    const validRate = Math.max(0, Math.min(5, ratingValue)); // Clamp the value between 0 and 5
-    onRate(validRate);
-  };
-
-  return (
-    <div className="rating-section" aria-label={`${label} rating`}>
-      <span>{label}: </span> {/* Display the label */}
-      <div className="rating" style={{ cursor: 'pointer' }}>
-        {[...Array(5)].map((_, index) => {
-          const ratingValue = index + 1;
-          return (
-            <FaStar
-              key={ratingValue}
-              className="rating-star"
-              size={20}
-              color={ratingValue <= (hover || value) ? "#ffc107" : "#e4e5e9"}
-              onClick={() => handleRate(ratingValue)}
-              onMouseEnter={() => setHover(ratingValue)}
-              onMouseLeave={() => setHover(null)}
-              onKeyDown={(e) => { if (e.key === 'Enter') handleRate(ratingValue); }}
-              tabIndex={0} // Make stars focusable
-              aria-label={`Rate ${label} ${ratingValue} stars`}
-              role="button" // Semantically mark as button for accessibility
-            />
-          );
-        })}
-      </div>
-    </div>
-  );
+    return (
+        <div className="rating-section" aria-label={`${label} rating`}>
+            <span>{label}: </span>
+            {[...Array(5)].map((_, index) => {
+                const ratingValue = index + 1;
+                return (
+                    <FaStar
+                        key={ratingValue}
+                        onClick={() => onRate(value === ratingValue ? null : ratingValue)}
+                        onMouseEnter={() => setHover(ratingValue)}
+                        onMouseLeave={() => setHover(null)}
+                        color={(hover !== null ? (ratingValue <= hover) : (value !== null && ratingValue <= value)) ? "#ffc107" : "#e4e5e9"}
+                        style={{ cursor: 'pointer' }}
+                    />
+                );
+            })}
+        </div>
+    );
 };
 
 export default Rating;
