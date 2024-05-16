@@ -118,6 +118,34 @@ Follow these steps to install and set up My-Task-Manager on your local developme
 ### Step 6: Access the Application
 Visit http://localhost:3000 in your web browser to see the application running.
 
+## Usage Guide
+
+### Overview of the Usage Guide
+
+This usage guide will walk you through the key features and functionalities of My-Task-Manager. You'll learn how to create, manage, and track tasks effectively. This section is organized into several subsections, each focusing on a specific aspect of the application.
+
+### Detailed Step-by-Step Instructions
+
+#### Creating a New Task
+
+1. **Access the Task Creation Interface:**
+   - Click on the 'Add New Task' button located at the top-left corner of the dashboard.
+
+2. **Fill in Task Details:**
+   - Enter new task
+   - Score each value by clicking star
+   - Click the 'Save Task' button
+   - Total score will appear on the task list
+   - ![Task Creation Form](path/to/task-creation-form-screenshot.png)
+  
+3. **Automatic Task Ordering:**
+   - If you add new tasks following the above process, 1st priority task will appear at the top of the task list automatically and the other tasks will be listed from top to bottom.
+   - ![Task List](path/to/task-List-screenshot.png)
+
+```markdown
+To create a new task, click on the 'Add New Task' button located at the top-left corner of the dashboard. Enter new task, score each value by clicking star, and click the 'Save Task' button. The total score will appear on the task list.
+
+
 
 
 
