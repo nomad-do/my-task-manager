@@ -283,7 +283,8 @@ This usage guide will walk you through the key features and functionalities of M
 #### Creating a New Task
 
 1. **Access the Task Creation Interface:**
-   - Click on the 'Add New Task' button located at the top-left corner of the dashboard.
+   - Click on the 'Add New Task' button located at the dashboard.
+   - ![Add New Task](./images/my-task-manager_default.png)
 
 2. **Fill in Task Details:**
    - Enter new task
