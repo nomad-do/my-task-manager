@@ -1,117 +1,87 @@
+# My Task Manager
 
-# Introduction
-
-Welcome to **My-Task-Manager**, your comprehensive tool for effortlessly managing task priorities. Designed specifically for professionals, this application simplifies the process of prioritizing tasks, enabling you to focus on what truly matters—completing your most important tasks first.
+Welcome to my-task-manager, your comprehensive tool for effortlessly managing task priorities. Designed specifically for professionals, this application simplifies the process of prioritizing tasks, enabling you to focus on what truly matters—completing your most important tasks first.
 
 ## Key Benefits
 
 ### Easy Task Prioritization
 
-- **Intuitive Controls:** Determine the priority of your tasks with intuitive controls and clear, strategic options.
+- **Intuitive Controls**: Determine the priority of your tasks with intuitive controls and clear, strategic options.
 
 ### Reduced Decision-Making Time
 
-- **Efficient Workflow:** Spend less time deciding what to do next and more time doing it.
+- **Efficient Workflow**: Spend less time deciding what to do next and more time doing it.
 
 ### Streamlined Task Entry
 
-- **Quick Add:** Quickly add new tasks so you can focus on execution without cumbersome processes.
+- **Quick Add**: Quickly add new tasks so you can focus on execution without cumbersome processes.
 
 ### Focused Execution
 
-- **Minimized Distractions:** Concentrate on your highest priority tasks until they are completed, minimizing distractions and boosting productivity.
+- **Minimized Distractions**: Concentrate on your highest priority tasks until they are completed, minimizing distractions and boosting productivity.
 
-### Benefits of Progressive Web App (PWA)
+## Benefits of Progressive Web App (PWA)
 
-My-Task-Manager is also available as a Progressive Web App (PWA). This means you can install it on your device and enjoy a seamless, app-like experience. Here are some of the benefits of using My-Task-Manager as a PWA:
+My-Task-Manager is also available as a Progressive Web App (PWA). This means you can install it on your device and enjoy a seamless, app-like experience.
 
-#### Offline Access
+### Offline Access
 
-- **Continue Working Offline:** You can access your tasks and continue working even without an internet connection. Any changes you make will be synced once you’re back online.
+- **Continue Working Offline**: You can access your tasks and continue working even without an internet connection. Any changes you make will be synced once you’re back online.
 
-#### App-Like Experience
+### App-Like Experience
 
-- **Improved User Experience:** PWAs provide an app-like experience with smooth navigation, fast load times, and a user-friendly interface.
-- **No Need for App Store:** Unlike traditional apps, you don’t need to download My-Task-Manager from an app store. Simply add it to your home screen from your browser.
+- **Improved User Experience**: PWAs provide an app-like experience with smooth navigation, fast load times, and a user-friendly interface.
 
-#### Performance
+### No Need for App Store
 
-- **Fast Loading:** PWAs are optimized for fast loading times, ensuring a quick and responsive experience.
-- **Efficient Resource Use:** They use caching strategies to minimize resource use and improve performance.
+- **Install from Browser**: Simply add it to your home screen from your browser.
 
-#### Cross-Platform Compatibility
+### Performance
 
-- **Runs on Any Device:** Whether you’re using a desktop, tablet, or smartphone, the PWA adapts to your device’s screen size and resolution.
-- **Consistent Experience:** Enjoy a consistent user experience across different devices and operating systems.
+- **Fast Loading**: PWAs are optimized for fast loading times.
+- **Efficient Resource Use**: They use caching strategies to minimize resource use and improve performance.
 
-#### Secure and Reliable
+### Cross-Platform Compatibility
 
-- **HTTPS:** PWAs are served over HTTPS, ensuring a secure connection and protecting your data.
-- **Automatic Updates:** You’ll always have the latest version without needing to manually update the app.
+- **Runs on Any Device**: Whether you’re using a desktop, tablet, or smartphone, the PWA adapts to your device’s screen size and resolution.
+- **Consistent Experience**: Enjoy a consistent user experience across different devices and operating systems.
 
-### How to Install My-Task-Manager as a PWA
+### Secure and Reliable
 
-1. **Open My-Task-Manager in your browser.**
+- **HTTPS**: PWAs are served over HTTPS, ensuring a secure connection and protecting your data.
+- **Automatic Updates**: You’ll always have the latest version without needing to manually update the app.
+
+## How to Install My-Task-Manager as a PWA
+
+1. **Open my-task=manager in your browser.**
 2. **Click on the install prompt:**
    - On Chrome, click the install icon in the address bar or select "Add to Home Screen" from the menu.
    - On Safari, click the share button and select "Add to Home Screen."
-
 3. **Follow the instructions:**
    - Confirm the installation to add My-Task-Manager to your device.
 
-### Enjoy the Benefits
-
-By installing My-Task-Manager as a PWA, you can take advantage of these benefits and enhance your task management experience.
-
-**My-Task-Manager** is the ideal solution for anyone seeking to organize their tasks efficiently and effectively, making it easier than ever to see important tasks through from start to finish.
-
 ## Prerequisites
 
-Before you begin setting up the My-Task-Manager application, ensure you have the following software installed on your system. These tools are necessary to run a MERN stack application and utilize all its features:
+Before you begin setting up the my-task-manager application, ensure you have the following software installed on your system:
 
-### 1. **Node.js**
-- **Description**: Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine, and it's necessary for running the server-side portion of your application.
-- **Version Required**: Ensure you have Node.js version 14.x or higher installed, as this version provides better performance and enhanced security features.
-- **Installation**: Download and install Node.js from [Node.js official website](https://nodejs.org/).
-
-### 2. **MongoDB**
-- **Description**: MongoDB is a NoSQL database used to store your application's data. My-Task-Manager uses MongoDB to manage tasks, user settings, and other dynamic information.
-- **Version Required**: MongoDB version 4.4 or higher is recommended.
-- **Installation**: You can install MongoDB locally or use a cloud service like MongoDB Atlas. Instructions for both can be found on the [MongoDB official website](https://www.mongodb.com/).
-
-### 3. **npm (Node Package Manager)**
-- **Description**: npm is the package manager for Node.js and helps manage project dependencies.
-- **Installation**: npm is installed automatically with Node.js, but you may want to ensure it's updated to the latest version by running `npm install npm@latest -g` in your terminal.
-
-### 4. **React.js**
-- **Description**: React.js is a front-end JavaScript library used for building user interfaces, specifically for single-page applications.
-- **Installation**: React will be installed as part of your project dependencies via npm, but having a general understanding of its structure and capabilities is beneficial. More information can be found at [React official documentation](https://reactjs.org/).
-
-### 5. **Git**
-- **Description**: Git is a distributed version control system to manage your application's source code history.
-- **Installation**: Download and install Git from [Git's official site](https://git-scm.com/). This will be crucial for version control and contribution if you are collaborating with others.
-
-### 6. **A Text Editor or IDE**
-- **Description**: A code editor is required to write and edit your code. IDEs like Visual Studio Code also provide additional tools and extensions specifically useful for MERN stack development.
-- **Recommendations**: [Visual Studio Code](https://code.visualstudio.com/), [Sublime Text](https://www.sublimetext.com/), and [Atom](https://atom.io/) are popular choices that support JavaScript and have useful plugins for Node.js and React development.
-
-### 7. **An Internet Connection**
-- **Description**: An active internet connection is required to install necessary npm packages, access MongoDB Atlas if using a cloud database, and for various APIs that My-Task-Manager might interact with.
-
-Each of these components plays a crucial role in the setup and execution of your Task Manager application. Make sure to install and configure each one according to the provided instructions before proceeding with the installation of My-Task-Manager.
+1. **Node.js**: Node.js is a JavaScript runtime necessary for running the server-side portion of your application. Ensure you have version 14.x or higher installed.
+2. **MongoDB**: MongoDB is a NoSQL database used to store your application's data. Version 4.4 or higher is recommended.
+3. **npm (Node Package Manager)**: npm helps manage project dependencies. Ensure it's updated to the latest version.
+4. **React.js**: React.js is a front-end JavaScript library used for building user interfaces.
+5. **Git**: Git is a distributed version control system to manage your application's source code history.
+6. **A Text Editor or IDE**: Tools like Visual Studio Code, Sublime Text, or Atom are recommended for development.
+7. **An Internet Connection**: Necessary for installing npm packages and accessing cloud services.
 
 ## Installation Instructions
 
-Follow these steps to install and set up My-Task-Manager on your local development machine.
+Follow these steps to install and set up my-task-machine on your local development machine.
 
-### Step 1: Install Node.js and npm
+### Step 1: Install Node.js, npm, and MongoDB
 
-1. Download and install Node.js from [Node.js official website](https://nodejs.org/). Installing Node.js will automatically install npm, which is required to manage the project dependencies.
-2. Verify the installation by running the following commands in your terminal:
-   ```bash
-
-   node --version
-   npm --version
+- **Node.js and npm**: Download and install from the [Node.js official website](https://nodejs.org/). Verify the installation:
+  ```bash
+  node --version
+  npm --version
 
 ### Step 1: Install Node.js, npm, and MongoDB
 
@@ -124,26 +94,15 @@ Follow these steps to install and set up My-Task-Manager on your local developme
      npm --version
      ```
 
-2. **Setup MongoDB:**
-
+2. **MongoDB:**
    **Local Installation:**
-   - Download and install MongoDB from the [MongoDB Download Center](https://www.mongodb.com/try/download/community).
-   - Follow the on-screen instructions for your operating system to set it up.
-
+   - Download from the[MongoDB Download Center](https://www.mongodb.com/try/download/community).
    **MongoDB Atlas:**
-   - Register or sign into [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
-   - Create a new cluster.
-   - Follow the instructions to connect your application to the cluster using the provided connection string.
-
+   - Register and create a new cluster on[MongoDB Atlas](https://www.mongodb.com/cloud/atlas).   - 
+  
 ### Step 2: Clone the Repository
-
-1. Open your terminal.
-2. Run the following command to clone the project repository.
    ```bash
    git clone https://github.com/nomad-do/my-task-manager.git
-
-3. Change into the project directory.
-   ```bash
    cd my-task-manager
    ```
 
@@ -153,17 +112,20 @@ Follow these steps to install and set up My-Task-Manager on your local developme
    ```
 
 ### Step 4: Set Up Environment Variables
+Create a .env file in the root of the project and add the following:
    ```bash
-   DB_CONNECTION_STRING=mongodb://localhost/mytaskmanager
+   DB_CONNECTION_STRING=mongodb://localhost/my-task-manager
    JWT_SECRET=your_secret_key
    API_KEY=your_api_key
    ```
 
 ### Step 5: Start the Application
+ **Backend server:**
 1. To start the backend server, run:
     ```bash
     npm run start
     ```
+**Frontend application:**
 2. Open a new terminal, navigate to the frontend directory, and start the React application:
     ```bash
     cd frontend
@@ -175,38 +137,59 @@ Visit http://localhost:3000 in your web browser to see the application running.
 
 ## Usage Guide
 
-### Overview of the Usage Guide
+### Creating a New Task
 
-This usage guide will walk you through the key features and functionalities of My-Task-Manager. You'll learn how to create, manage, and track tasks effectively. This section is organized into several subsections, each focusing on a specific aspect of the application.
+#### Access the Task Creation Interface:
 
-### Detailed Step-by-Step Instructions
+- Click on the 'Add New Task' button located on the dashboard.
 
-#### Creating a New Task
+#### Fill in Task Details:
 
-1. **Access the Task Creation Interface:**
-   - Click on the 'Add New Task' button located at the dashboard.
-   - ![Add New Task](./images/my-task-manager_default.png)
+- Enter the task name.
+- Score each value (urgency/importance/effort) by clicking star.
+- Click the 'Save Task' button to add the task to your list.
 
-2. **Fill in Task Details:**
-   - Enter new task
-   - Score each value by clicking star
-   - Click the 'Save Task' button
-   - Total score will appear on the task list
-   - ![Task Creation Form](path/to/task-creation-form-screenshot.png)
-  
-3. **Automatic Task Ordering:**
-   - If you add new tasks following the above process, 1st priority task will appear at the top of the task list automatically and the other tasks will be listed from top to bottom.
-   - ![Task List](path/to/task-List-screenshot.png)
+### Viewing Tasks
 
-```markdown
-To create a new task, click on the 'Add New Task' button located at the top-left corner of the dashboard. Enter new task, score each value by clicking star, and click the 'Save Task' button. The total score will appear on the task list.
+#### Task List:
 
+- Access the list of tasks on the dashboard.
+- Tasks are automatically ordered by priority, with the highest priority tasks at the top.
 
+### Editing a Task
 
+#### Access the Edit Interface:
 
+- Click on the task you want to edit.
+- Modify the task details and priority.
+- Save the changes.
 
+### Deleting a Task
 
+#### Remove a Task:
 
+- Click the delete icon next to the task you want to remove.
+- Confirm the deletion in the popup dialog.
 
+### Completing a Task
 
+### Automatic Task Ordering
 
+#### Prioritize Tasks:
+
+- Understand that tasks will be automatically ordered by priority.
+- The highest priority tasks appear at the top of the list.
+
+### Using Filters and Search
+
+#### Filter Tasks:
+
+- Use filters to view tasks based on their status (e.g., all, active, completed).
+
+#### Search Tasks:
+
+- Use the search bar to find specific tasks by name or description.
+
+## License
+
+This project is licensed under the MIT License.
