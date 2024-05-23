@@ -1,19 +1,36 @@
-// src/components/TaskDetails.js
-import React from 'react';
-import { Card } from 'react-bootstrap'; // Importing Card from react-bootstrap
-import Rating from './Rating'; // Assuming you have a Rating component for the task details
+import React, { useState } from 'react';
+import EditTask from './EditTask';
 
-const TaskDetails = ({ task, onValueChange }) => {
+const TaskDetails = ({ task, updateTask }) => {
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleSaveClick = (updatedTask) => {
+    updateTask(updatedTask);
+    setIsEditing(false);
+  };
+
+  const handleCancelClick = () => {
+    setIsEditing(false);
+  };
+
   return (
-    <Card className="mb-3">
-      <Card.Body>
-        <Card.Title>{task.title}</Card.Title>
-        <Rating value={task.urgency} onRate={(value) => onValueChange(task._id, 'urgency', value)} />
-        <Rating value={task.importance} onRate={(value) => onValueChange(task._id, 'importance', value)} />
-        <Rating value={task.effort} onRate={(value) => onValueChange(task._id, 'effort', value)} />
-      </Card.Body>
-    </Card>
+    <div className="task">
+      {isEditing ? (
+        <EditTask task={task} saveTask={handleSaveClick} cancelEdit={handleCancelClick} />
+      ) : (
+        <div className="task-details">
+          <p>Task Name: {task.text}</p>
+          <p>Completed: {task.completed ? 'Yes' : 'No'}</p>
+          <button onClick={handleEditClick}>Edit</button>
+        </div>
+      )}
+    </div>
   );
 };
 
 export default TaskDetails;
+

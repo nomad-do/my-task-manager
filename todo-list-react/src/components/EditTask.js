@@ -1,37 +1,39 @@
-// src/components/EditTask.js
 import React, { useState } from 'react';
-import { Card } from 'react-bootstrap';
-import axios from 'axios'; // Import Axios
 
-const EditTask = ({ task, onUpdate }) => {
-    const [title, setTitle] = useState(task.title);
+const EditTask = ({ task, saveTask, cancelEdit }) => {
+  const [taskDetails, setTaskDetails] = useState(task);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (!title) return;
-        try {
-            const response = await axios.put(`/api/tasks/${task.id}`, { title }); // Make PUT request
-            onUpdate(response.data); // Update task in parent component
-        } catch (error) {
-            console.error('Error updating task:', error);
-        }
-    };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setTaskDetails({
+      ...taskDetails,
+      [name]: name === 'completed' ? e.target.checked : value, // Handling checkbox for completed field
+    });
+  };
 
-    return (
-        <Form onSubmit={handleSubmit}>
-            <Form.Group>
-                <Form.Control
-                    type="text"
-                    placeholder="Enter task"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-                Update Task
-            </Button>
-        </Form>
-    );
+  const handleSaveClick = () => {
+    saveTask(taskDetails);
+  };
+
+  return (
+    <div className="edit-task-form">
+      <input
+        type="text"
+        name="text"
+        value={taskDetails.text}
+        onChange={handleChange}
+      />
+      <input
+        type="checkbox"
+        name="completed"
+        checked={taskDetails.completed}
+        onChange={handleChange}
+      />
+      <label>Completed</label>
+      <button onClick={handleSaveClick}>Save</button>
+      <button onClick={cancelEdit}>Cancel</button>
+    </div>
+  );
 };
 
 export default EditTask;

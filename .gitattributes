@@ -1,12 +1,43 @@
+# Handle all files as text and normalize line endings to LF
 * text=auto
+
+# Specific text file types to LF
 *.js text eol=lf
 *.css text eol=lf
 *.html text eol=lf
 *.scss text eol=lf
 *.java text eol=lf  
 *.py text eol=lf    
+*.md text eol=lf
+*.xml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.txt text eol=lf
+*.sh text eol=lf
+
+# Windows-specific files to CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
 
 # Binary files
 *.png binary
 *.jpg binary
 *.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.exe binary
+*.dll binary
+
+# Other binary files (common extensions)
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.mp3 binary
+*.mp4 binary
+*.avi binary
+*.mov binary
+*.wmv binary
+

@@ -1,51 +1,64 @@
 // TaskModal.js
 import React from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-import InputField from './InputField';  // Ensure this is used for the Title field only
-import Rating from './Rating';  // Make sure this import path is correct
 
 const TaskModal = ({ showModal, setShowModal, newTask, handleInputChange, handleAddTask }) => {
-  return (
-    <Modal show={showModal} onHide={() => setShowModal(false)}>
-      <Modal.Header closeButton>
-        <Modal.Title>Add a New Task</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Form>
-          {/* Title Input Field */}
-          <InputField
-            key="title"
-            label="Title"
-            name="title"
-            type="text"
-            value={newTask.title}
-            onChange={handleInputChange}
-          />
-
-          {/* Rating Components for Urgency, Importance, and Effort */}
-          <Rating
-            label="Urgency"
-            value={newTask.urgency}
-            onRate={value => handleInputChange({ target: { name: 'urgency', value } })}
-          />
-          <Rating
-            label="Importance"
-            value={newTask.importance}
-            onRate={value => handleInputChange({ target: { name: 'importance', value } })}
-          />
-          <Rating
-            label="Effort"
-            value={newTask.effort}
-            onRate={value => handleInputChange({ target: { name: 'effort', value } })}
-          />
-        </Form>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={() => setShowModal(false)}>Close</Button>
-        <Button variant="primary" onClick={handleAddTask}>Save Task</Button>
-      </Modal.Footer>
-    </Modal>
-  );
+    return (
+        <Modal show={showModal} onHide={() => setShowModal(false)}>
+            <Modal.Header closeButton>
+                <Modal.Title>My-Task-Manager</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form>
+                    <div style={{ marginTop: '30px' }}></div> {/* Adds space above the title */}
+                    <Form.Group controlId="formTaskTitle">
+                        <Form.Label>Title</Form.Label>
+                        <Form.Control
+                            type="text"
+                            name="title"
+                            value={newTask.title}
+                            onChange={handleInputChange}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="formTaskUrgency">
+                        <Form.Label>Urgency</Form.Label>
+                        <Form.Control
+                            type="number"
+                            name="urgency"
+                            value={newTask.urgency}
+                            onChange={handleInputChange}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="formTaskImportance">
+                        <Form.Label>Importance</Form.Label>
+                        <Form.Control
+                            type="number"
+                            name="importance"
+                            value={newTask.importance}
+                            onChange={handleInputChange}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="formTaskEffort">
+                        <Form.Label>Effort</Form.Label>
+                        <Form.Control
+                            type="number"
+                            name="effort"
+                            value={newTask.effort}
+                            onChange={handleInputChange}
+                        />
+                    </Form.Group>
+                </Form>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={() => setShowModal(false)}>
+                    Close
+                </Button>
+                <Button variant="primary" onClick={handleAddTask}>
+                    Add Task
+                </Button>
+            </Modal.Footer>
+        </Modal>
+    );
 };
 
 export default TaskModal;

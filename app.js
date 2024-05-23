@@ -1,91 +1,24 @@
-// require('dotenv').config();
-// const express = require('express');
-// const app = express();
-// app.use(express.json());
-// const cors = require('cors');
-
-// // Import routers
-// const userRoutes = require('./routes/userRoutes');
-// const authRoutes = require('./routes/authRoutes');
-// const taskRoutes = require('./routes/taskRoutes');
-
-// const mongoose = require('mongoose');
-
-// const newId = new mongoose.Types.ObjectId();
-// console.log(newId); // This will log a new unique ObjectID
-
-// app.use('/api/users', userRoutes);
-// app.use('/auth', authRoutes);
-// app.use('/tasks', taskRoutes);
-
-// const logger = require("./config/logger");
-// logger.error("hello world!");
-
-// mongoose.set('debug', true);
-// mongoose.set('strictQuery', true);
-
-// mongoose.connect(process.env.MONGO_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// }).then(() => console.log('MongoDB connected successfully'))
-// .catch(err => console.error('MongoDB connection error:', err));
-
-// app.use((req, res, next) => {
-//     res.status(404).send("Sorry, can't find that!");
-// }); 
-
-// app.use((err, req, res, next) => {
-//   console.error(err.stack); // Log the error stack for debugging
-//   res.status(500).send({ error: err.message }); // Send a generic error message or customize based on the error
-// });
-
-// app.get('/', (req, res) => {
-//   logger.info('GET /');
-//   res.sendStatus(200);
-// });
-
-// app.get('/error', (req, res) => {
-//   logger.error('Error message');
-//   res.sendStatus(500);
-// });
-
-// // Example of a simple API endpoint
-// app.get('/api/tasks', (req, res) => {
-//   res.json({ message: 'This is a CORS-enabled API.' });
-// });
-
-// // Use cors middleware with options if needed
-// app.use(cors({
-//   origin: 'http://localhost:3000'  // Allow only the React frontend to access the backend
-// }));
-
-
-// // Set the port and start the server
-// const PORT = process.env.PORT || 3001;
-// app.listen(PORT, () => {
-//     console.log(`Server running on port ${PORT}`);
-// });
-
 require('dotenv').config();
 const express = require('express');
-const app = express();
-app.use(express.json());
 const cors = require('cors');
 const mongoose = require('mongoose');
-mongoose.set('strictQuery', true); 
 const logger = require('./config/logger');
+const authRoutes = require('./routes/authRoutes');
+const taskRoutes = require('./routes/taskRoutes');
+// const testRoutes = require('./routes/testRoutes'); // Optional, inactive
+// const userRoutes = require('./routes/userRoutes'); // Optional, inactive
+// const userService = require('./services/userService'); // Optional, inactive
 
-// Use cors middleware before your routes
+const app = express();
+
+// Middleware
+app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:3000'  // Allow only the React frontend to access the backend
+  origin: 'http://localhost:3000'
 }));
 
-// Import routers
-const userRoutes = require('./routes/userRoutes');
-const authRoutes = require('./routes/authRoutes');
-const taskRoutes = require('./routes/taskRoutes');  // Make sure this file exists and is correct
-
-// Database connection
+// Connect to Database
+mongoose.set('strictQuery', true);
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -93,26 +26,29 @@ mongoose.connect(process.env.MONGO_URI, {
   console.log('MongoDB connected successfully');
 }).catch(err => {
   console.error('MongoDB connection error:', err);
+  process.exit(1); // Exit process with failure
 });
 
-// Routes setup
-app.use('/api/users', userRoutes);
+// Routes
 app.use('/auth', authRoutes);
-app.use('/api/tasks', taskRoutes);  // Adjusted to mount taskRoutes under the specific path /api/tasks
+app.use('/api/tasks', taskRoutes);
+// app.use('/api/test', testRoutes); // Optional, inactive
+// app.use('/api/users', userRoutes); // Optional, inactive
 
-// 404 Not Found Middleware
+// 404 Handler
 app.use((req, res, next) => {
-    res.status(404).send("Sorry, can't find that!");
+  res.status(404).send("Sorry, can't find that!");
 });
 
-// Error Handling Middleware
+// Error Handler
 app.use((err, req, res, next) => {
   logger.error(err.stack);
   res.status(500).send({ error: err.message });
 });
 
-// Server start
+// Start Server
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-    logger.info(`Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
+  logger.info(`Server running on port ${PORT}`);
 });

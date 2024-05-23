@@ -1,15 +1,19 @@
-import React from 'react';
+// App.js
+import React, { useState } from 'react';
+import AuthForm from './components/AuthForm';
 import TaskManager from './components/TaskManager';
-import './App.css'; // Adjust the path based on the file's location relative to the component.
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  return (
-    <div className="container">
-      <h1>My Task Manager</h1>
-      <TaskManager />
-    </div>
-  );
+    const [token, setToken] = useState(localStorage.getItem('token'));
+
+    return (
+        <div className="container">
+            <h1>My Task Manager</h1>
+            {token ? <TaskManager /> : <AuthForm setToken={setToken} />}
+        </div>
+    );
 }
 
 export default App;
