@@ -15,70 +15,135 @@ To start using the API, you will need to register and obtain a Bearer token.
 - **URL**: `/auth/register`
 - **Method**: POST
 - **Body**:
+
   ```json
   {
     "username": "string",
     "password": "string"
   }
+  ```
 
 ### Responses:
+
 - **201 created**:
+
 ```json
 {
   "message": "User created successfully."
 }
+```
+
 - **400 Bad Request**:
+- **When username or password is missing**
+
+```json
+{
+  "error": "Username and password are required."
+}
+```
+
+- **When the username is already taken**
+
 ```json
 {
   "error": "Username is already taken."
 }
-- **500 Internal Server Error**:
+```
+
+- **500 Internal Server Error:**
+
 ```json
 {
-  "error": "Username is already taken."
+  "error": "An error occurred during registration."
 }
+```
 
 ## Login
 
 - **URL**: `/auth/login`
 - **Method**: POST
 - **Request Body**:
+
 ```json
 {
   "username": "string",
   "password": "string"
 }
+```
+
+### Responses:
+
+**200 OK:**
+
+```json
+{
+  "message": "Login successful",
+  "token": "jwt_token_here"
+}
+```
+
+**400 Bad Request:**
+
+```json
+{
+  "error": "Username and password are required."
+}
+```
+
+**401 Unauthorized:**
+**When the user is not found:**
+
+```json
+{
+  "error": "User not found."
+}
+```
+
+**When the password is invalid:**
+
+```json
+{
+  "error": "Invalid password."
+}
+```
 
 ## Tasks
 
 ## Get Tasks
+
 - **URL**: `/api/tasks`
 - **Method**: GET
 - **Headers**:
+
 ```http
 Authorization: Bearer <token>
+```
 
 ### Responses:
+
 - **200 OK**:
+
 ```json
-[
-  {
-    "_id": "60c72b2f4f1a2c001c8d4c7a",
-    "text": "New Task",
-    "completed": false,
-    "user": "60c72aaf4f1a2c001c8d4c79"
-  }
-]
+{
+  "_id": "60c72b2f4f1a2c001c8d4c7a",
+  "text": "New Task",
+  "completed": false,
+  "user": "60c72aaf4f1a2c001c8d4c79"
+}
+```
 
 ## Create Task:
+
 - **URL**: `/api/tasks`
 - **Method**: POST
 - **Headers**:
   ```http
   Authorization: Bearer <token>
+  ```
 - **Body**:
-  ```json
-  {
+
+```json
+{
   "title": "Sample Task",
   "urgency": 5,
   "importance": 3,
@@ -86,11 +151,14 @@ Authorization: Bearer <token>
   "priority": 9,
   "user": "664eec3fe2179f059ed2f365"
 }
+```
 
 ### Responses:
+
 - **201 Created**:
-  ```json
-  {
+
+```json
+{
   "title": "Sample Task",
   "urgency": 5,
   "importance": 3,
@@ -98,25 +166,36 @@ Authorization: Bearer <token>
   "priority": 9,
   "user": "664eec3fe2179f059ed2f365"
 }
+```
+
 - **400 Bad Request**:
-  ```json
-  {
+
+```json
+{
   "message": "All fields must be filled: title, urgency, importance, and effort."
 }
+```
+
 - **500 Internal Server Error**:
-  ```json
-  {
+
+```json
+{
   "message": "An error occurred during task creation."
 }
+```
 
 ## Update Task:
+
 - **URL**: `/api/tasks/:id`
 - **Method**: PUT
 - **Headers**:
+
 ```http
 Authorization: Bearer <token>
+```
 
 - **Request Body**:
+
 ```json
 {
   "title": "Updated Task Title",
@@ -124,9 +203,12 @@ Authorization: Bearer <token>
   "importance": 2,
   "effort": 3
 }
+```
 
 ### Responses:
+
 - **200 OK**:
+
 ```json
 {
   "title": "Updated Task Title",
@@ -136,45 +218,56 @@ Authorization: Bearer <token>
   "priority": 9,
   "user": "664eec3fe2179f059ed2f365"
 }
+```
 
 - **404 Not Found**:
+
 ```json
 {
   "message": "Task not found."
 }
+```
+
 - **500 Internal Server Error:**
+
 ```json
 {
-  "message": "An error occurred during task update."  
+  "message": "An error occurred during task update."
 }
+```
 
 ## Delete Task
+
 - **URL**: `/api/tasks/:id`
 - **Method**: DELETE
 - **Headers**:
+
 ```http
 Authorization: Bearer <token>
+```
 
 ### Responses:
-- **200 OK**: 
+
+- **200 OK**:
+
 ```json
 {
   "message": "Task deleted successfully."
 }
-- **404 Not Found**: 
+```
+
+- **404 Not Found**:
+
 ```json
 {
   "message": "Task not found."
 }
-- **500 Internal Server Error**: 
+```
+
+- **500 Internal Server Error**:
+
 ```json
 {
   "message": "An error occurred during task deletion."
 }
-
-
-
-
-
-
-
+```
