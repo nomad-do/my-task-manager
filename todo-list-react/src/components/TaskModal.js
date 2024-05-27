@@ -1,21 +1,22 @@
-// TaskModal.js
 import React from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
-const TaskModal = ({ showModal, setShowModal, newTask, handleInputChange, handleAddTask }) => {
+const TaskModal = ({ showModal, setShowModal, newTask, handleInputChange, handleAddTask, error }) => {
     return (
         <Modal show={showModal} onHide={() => setShowModal(false)}>
             <Modal.Header closeButton>
                 <Modal.Title>My-Task-Manager</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form>
+                <Form onSubmit={(e) => { e.preventDefault(); handleAddTask(); }}>
                     <div style={{ marginTop: '30px' }}></div> {/* Adds space above the title */}
+                    {error && <p style={{ color: 'red' }}>{error}</p>}
                     <Form.Group controlId="formTaskTitle">
                         <Form.Label>Title</Form.Label>
                         <Form.Control
                             type="text"
                             name="title"
+                            placeholder="Enter task title"
                             value={newTask.title}
                             onChange={handleInputChange}
                         />
@@ -26,6 +27,8 @@ const TaskModal = ({ showModal, setShowModal, newTask, handleInputChange, handle
                             type="number"
                             name="urgency"
                             value={newTask.urgency}
+                            min="1"
+                            max="5"
                             onChange={handleInputChange}
                         />
                     </Form.Group>
@@ -35,6 +38,8 @@ const TaskModal = ({ showModal, setShowModal, newTask, handleInputChange, handle
                             type="number"
                             name="importance"
                             value={newTask.importance}
+                            min="1"
+                            max="5"
                             onChange={handleInputChange}
                         />
                     </Form.Group>
@@ -44,6 +49,8 @@ const TaskModal = ({ showModal, setShowModal, newTask, handleInputChange, handle
                             type="number"
                             name="effort"
                             value={newTask.effort}
+                            min="1"
+                            max="5"
                             onChange={handleInputChange}
                         />
                     </Form.Group>
@@ -62,3 +69,4 @@ const TaskModal = ({ showModal, setShowModal, newTask, handleInputChange, handle
 };
 
 export default TaskModal;
+
