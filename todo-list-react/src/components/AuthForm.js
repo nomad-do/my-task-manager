@@ -1,29 +1,32 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const AuthForm = ({ setToken }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false); // Set to false to default to Register view
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const endpoint = isLogin ? '/auth/login' : '/auth/register';
+    const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register';
     try {
-      console.log('Sending request to:', endpoint);
-      console.log('Request payload:', { username, password });
       const response = await axios.post(endpoint, { username, password });
-      console.log('Response:', response.data);
       if (isLogin) {
-        setToken(response.data.token);
-        localStorage.setItem('token', response.data.token);
+        const { token, refreshToken } = response.data;
+        localStorage.setItem('token', token);
+        localStorage.setItem('refreshToken', refreshToken);
+        setToken(token);
         setError('');
-        // Redirect to tasks or another appropriate page
+        navigate('/tasks'); // Redirect to tasks after successful login
       } else {
         alert('Registration successful, please log in.');
         setIsLogin(true);
       }
+      setUsername(''); // Clear the username field
+      setPassword(''); // Clear the password field
     } catch (error) {
       console.error('Error:', error);
       setError('Authentication failed. Please check your credentials and try again.');
@@ -53,7 +56,7 @@ const AuthForm = ({ setToken }) => {
         />
       </div>
       <button type="submit">{isLogin ? 'Login' : 'Register'}</button>
-      <button type="button" onClick={() => setIsLogin(!isLogin)}>
+      <button type="button" onClick={() => { setIsLogin(!isLogin); setError(''); setUsername(''); setPassword(''); }}>
         {isLogin ? 'Switch to Register' : 'Switch to Login'}
       </button>
     </form>

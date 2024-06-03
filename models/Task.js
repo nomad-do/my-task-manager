@@ -1,12 +1,17 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const taskSchema = new mongoose.Schema({
-    title: { type: String, required: true, trim: true },
-    urgency: { type: Number, required: true },
-    importance: { type: Number, required: true },
-    effort: { type: Number, required: true },
-    priority: { type: Number, required: true },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+// Define your schema
+const taskSchema = new Schema({
+  title: { type: String, required: true },
+  urgency: { type: Number, required: true },
+  importance: { type: Number, required: true },
+  effort: { type: Number, required: true },
+  priority: { type: Number, required: true },
+  user: { type: Schema.Types.ObjectId, ref: 'User', required: true }
 });
 
-module.exports = mongoose.model('Task', taskSchema);
+// Check if the model already exists to avoid OverwriteModelError
+const Task = mongoose.models.Task || mongoose.model('Task', taskSchema);
+
+module.exports = Task;

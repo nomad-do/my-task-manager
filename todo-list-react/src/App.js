@@ -1,70 +1,64 @@
-// // App.js
-// import React, { useState } from 'react';
-// import AuthForm from './components/AuthForm';
-// import TaskManager from './components/TaskManager';
-// import './App.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-
-// function App() {
-//     const [token, setToken] = useState(localStorage.getItem('token'));
-
-//     return (
-//         <div className="container">
-//             <h1>My Task Manager</h1>
-//             {token ? <TaskManager /> : <AuthForm setToken={setToken} />}
-//         </div>
-//     );
-// }
-
-// export default App;
-
-
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode'; // Correct named import
 import AuthForm from './components/AuthForm';
 import TaskManager from './components/TaskManager';
-import { jwtDecode } from 'jwt-decode';
+import refreshToken from './utils/refreshToken';
+
+// Utility function to check if a token is expired
+const isTokenExpired = (token) => {
+  if (!token) return true;
+
+  const { exp } = jwtDecode(token);
+  if (!exp) return true;
+
+  const expiryDate = new Date(exp * 1000);
+  return expiryDate < new Date();
+};
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token'));
+  const [refreshTokenValue, setRefreshTokenValue] = useState(localStorage.getItem('refreshToken'));
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token && isTokenExpired(token)) {
-      localStorage.removeItem('token');
-      setToken(null);
-    }
-  }, []);
+    const handleToken = async () => {
+      if (isTokenExpired(token)) {
+        if (refreshTokenValue) {
+          try {
+            const newToken = await refreshToken(refreshTokenValue);
+            setToken(newToken);
+          } catch (error) {
+            localStorage.removeItem('token');
+            localStorage.removeItem('refreshToken');
+            setToken(null);
+            setRefreshTokenValue(null);
+          }
+        } else {
+          localStorage.removeItem('token');
+          setToken(null);
+        }
+      }
+    };
 
-  const handleLogin = (newToken) => {
-    localStorage.setItem('token', newToken);
-    setToken(newToken);
-  };
+    handleToken();
+  }, [token, refreshTokenValue]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken');
     setToken(null);
+    setRefreshTokenValue(null);
   };
 
   return (
     <Router>
       <Routes>
-        <Route path="/auth" element={<AuthForm setToken={handleLogin} />} />
-        <Route path="/tasks" element={token ? <TaskManager onLogout={handleLogout} /> : <Navigate to="/auth" />} />
-        <Route path="/" element={<Navigate to="/tasks" />} />
+        <Route path="/login" element={<AuthForm setToken={setToken} />} />
+        <Route path="/tasks" element={token ? <TaskManager onLogout={handleLogout} /> : <Navigate to="/login" />} />
+        <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
   );
-};
-
-const isTokenExpired = (token) => {
-  try {
-    const decodedToken = jwtDecode(token);
-    const currentTime = Date.now() / 1000; // Current time in seconds
-    return decodedToken.exp < currentTime; // Return true if expired
-  } catch (error) {
-    return true; // If there is an error decoding, consider the token expired
-  }
 };
 
 export default App;

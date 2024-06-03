@@ -2,9 +2,10 @@ const Task = require('../models/Task');
 
 exports.getTasks = async (req, res) => {
   try {
-    const tasks = await Task.find().populate('user');
-    res.status(200).json(tasks); // Ensure to always specify the status code explicitly
+    const tasks = await Task.find({ user: req.user.userId }).populate('user');
+    res.status(200).json(tasks);
   } catch (err) {
+    console.error('Error fetching tasks:', err); // Log the detailed error
     res.status(500).json({ message: "An error occurred fetching tasks." });
   }
 };
@@ -21,20 +22,14 @@ exports.createTask = async (req, res) => {
     importance,
     effort,
     priority: urgency + importance + effort,
-    user: req.user.userId // Attach the authenticated user to the task
+    user: req.user.userId
   });
 
   try {
     const newTask = await task.save();
-    res.status(201).json({
-      title: newTask.title,
-      urgency: newTask.urgency,
-      importance: newTask.importance,
-      effort: newTask.effort,
-      priority: newTask.priority,
-      user: newTask.user
-    }); // Match the structure as described in the API documentation
+    res.status(201).json(newTask);
   } catch (err) {
+    console.error('Error creating task:', err); // Log the detailed error
     res.status(500).json({ message: "An error occurred during task creation." });
   }
 };
@@ -47,32 +42,22 @@ exports.updateTask = async (req, res) => {
   }
 
   try {
-    // Find the task by ID first
     const task = await Task.findById(req.params.id);
     if (!task) {
       return res.status(404).json({ message: "Task not found." });
     }
 
-    // Update the task fields
     task.title = title;
     task.urgency = urgency;
     task.importance = importance;
     task.effort = effort;
     task.priority = urgency + importance + effort;
-    task.user = req.user.userId; // Ensure the user remains attached to the task
 
-    // Save the updated task
     const updatedTask = await task.save();
 
-    res.status(200).json({
-      title: updatedTask.title,
-      urgency: updatedTask.urgency,
-      importance: updatedTask.importance,
-      effort: updatedTask.effort,
-      priority: updatedTask.priority,
-      user: updatedTask.user
-    });
+    res.status(200).json(updatedTask);
   } catch (err) {
+    console.error('Error updating task:', err); // Log the detailed error
     res.status(500).json({ message: "An error occurred during task update." });
   }
 };
@@ -85,6 +70,7 @@ exports.deleteTask = async (req, res) => {
     }
     res.status(200).json({ message: 'Task deleted successfully' });
   } catch (err) {
+    console.error('Error deleting task:', err); // Log the detailed error
     res.status(500).json({ message: "An error occurred during task deletion." });
   }
 };

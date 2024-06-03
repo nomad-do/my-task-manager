@@ -11,7 +11,7 @@ function authenticateToken(req, res, next) {
 
   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
     if (err) {
-      console.log('Token verification failed.');
+      console.log('Token verification failed:', err);
       return res.sendStatus(403);
     }
     console.log('Token verified successfully.');
