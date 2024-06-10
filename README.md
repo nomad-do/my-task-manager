@@ -78,13 +78,6 @@ Follow these steps to install and set up my-task-machine on your local developme
 
 ### Step 1: Install Node.js, npm, and MongoDB
 
-- **Node.js and npm**: Download and install from the [Node.js official website](https://nodejs.org/). Verify the installation:
-  ```bash
-  node --version
-  npm --version
-
-### Step 1: Install Node.js, npm, and MongoDB
-
 1. **Install Node.js and npm:**
    - Download and install Node.js from the [Node.js official website](https://nodejs.org/). 
      This installation will also automatically install npm, necessary for managing project dependencies.
@@ -114,64 +107,58 @@ Follow these steps to install and set up my-task-machine on your local developme
 ### Step 4: Set Up Environment Variables
 Create a .env file in the root of the project and add the following:
    ```bash
-   DB_CONNECTION_STRING=mongodb://localhost/my-task-manager
+   DB_CONNECTION_STRING=mongodb://localhost/your-database
    JWT_SECRET=your_secret_key
    API_KEY=your_api_key
    ```
 
 ### Step 5: Start the Application
- **Backend server:**
+
+**Backend server:**
+
 1. To start the backend server, run:
     ```bash
-    npm run start
+    node app.js
     ```
+
 **Frontend application:**
+
 2. Open a new terminal, navigate to the frontend directory, and start the React application:
     ```bash
     cd frontend
     npm start
     ```
 
+
 ### Step 6: Access the Application
 Visit http://localhost:3000 in your web browser to see the application running.
 
 ## Usage Guide
 
-### Creating a New Task
+### Adding a New Task
 
-#### Access the Task Creation Interface:
+To add a new task, follow these steps:
 
-- Click on the 'Add New Task' button located on the dashboard.
-
-#### Fill in Task Details:
-
-- Enter the task name.
-- Score each value (urgency/importance/effort) by clicking star.
-- Click the 'Save Task' button to add the task to your list.
-
-### Viewing Tasks
-
-#### Task List:
-
-- Access the list of tasks on the dashboard.
-- Tasks are automatically ordered by priority, with the highest priority tasks at the top.
+1. Click on the 'Add New Task' button located on the dashboard.
+2. Fill in the task details in the form that appears.
+3. Score each value (urgency, importance, effort) by selecting the appropriate number from the dropdown.
+4. Click the 'Save Task' button to add the task to your list.
 
 ### Editing a Task
 
-#### Access the Edit Interface:
+To edit an existing task, follow these steps:
 
-- Click on the task you want to edit.
-- Modify the task details and priority.
-- Save the changes.
+1. Click on the 'Edit' button next to the task you want to edit.
+2. Modify the task details in the form that appears.
+3. Score each value (urgency, importance, effort) by selecting the appropriate number from the dropdown.
+4. Click the 'Save Task' button to update the task.
 
 ### Deleting a Task
 
-#### Remove a Task:
+To delete a task, follow these steps:
 
-- Click the delete icon next to the task you want to remove.
-- Confirm the deletion in the popup dialog.
-
-### Completing a Task
+1. Click on the 'Delete' button next to the task you want to remove.
+2. Confirm the deletion if prompted.
 
 ### Automatic Task Ordering
 
@@ -179,17 +166,7 @@ Visit http://localhost:3000 in your web browser to see the application running.
 
 - Understand that tasks will be automatically ordered by priority.
 - The highest priority tasks appear at the top of the list.
-
-### Using Filters and Search
-
-#### Filter Tasks:
-
-- Use filters to view tasks based on their status (e.g., all, active, completed).
-
-#### Search Tasks:
-
-- Use the search bar to find specific tasks by name or description.
-
+  
 ## License
 
 This project is licensed under the MIT License.
