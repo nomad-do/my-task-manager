@@ -77,6 +77,38 @@ li:hover {
   color: #ffeb3b;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.task-details {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.task-details div {
+  flex: 1;
+  text-align: center;
+}
+
 /* Task List */
 .task-list {
   padding: 20px; /* Padding around the entire list */

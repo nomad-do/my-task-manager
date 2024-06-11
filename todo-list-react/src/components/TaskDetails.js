@@ -23,8 +23,11 @@ const TaskDetails = ({ task, updateTask }) => {
         <EditTask task={task} saveTask={handleSaveClick} cancelEdit={handleCancelClick} />
       ) : (
         <div className="task-details">
-          <p>Task Name: {task.text}</p>
-          <p>Completed: {task.completed ? 'Yes' : 'No'}</p>
+          <p>Task Name: {task.title}</p>
+          <p>Urgency: {task.urgency}</p>
+          <p>Importance: {task.importance}</p>
+          <p>Effort: {task.effort}</p>
+          <p>Total Score: {task.urgency + task.importance + task.effort}</p>
           <button onClick={handleEditClick}>Edit</button>
         </div>
       )}
@@ -33,4 +36,3 @@ const TaskDetails = ({ task, updateTask }) => {
 };
 
 export default TaskDetails;
-
