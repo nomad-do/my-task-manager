@@ -1,7 +1,0 @@
-2024-02-23 17:50:41 [Winston practice] error: uncaughtException: logger is not a function
-TypeError: logger is not a function
-    at Server.<anonymous> (D:\Program Files\My-Story-Project\app.js:38:3)
-    at Object.onceWrapper (node:events:629:28)
-    at Server.emit (node:events:527:35)
-    at emitListeningNT (node:net:1906:10)
-    at process.processTicksAndRejections (node:internal/process/task_queues:81:21)

@@ -1,4 +1,0 @@
-2024-04-01 20:04:48 [my-first-project] info: Serving on port 3000 service: "express" port: 3000
-2024-04-01 20:04:49 [my-first-project] info: Connected to MongoDB url: "mongodb://127.0.0.1:27017/my-story"
-2024-04-01 20:07:05 [my-first-project] info: Incoming request method: "POST" path: "/auth/register"
-2024-04-01 20:08:05 [my-first-project] info: Incoming request method: "POST" path: "/auth/login"
