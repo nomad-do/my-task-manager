@@ -1,4 +1,8 @@
 {
   "git.ignoreLimitWarning": true,
-  "terminal.integrated.accessibleViewFocusOnCommandExecution": false
+  "terminal.integrated.accessibleViewFocusOnCommandExecution": false,
+  "cSpell.words": [
+    "linebreak",
+    "testuser"
+  ]
 }
