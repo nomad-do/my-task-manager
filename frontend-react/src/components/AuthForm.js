@@ -5,7 +5,7 @@ import axios from 'axios';
 const AuthForm = ({ setToken }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [isLogin, setIsLogin] = useState(false); // Set to false to default to Register view
+  const [isLogin, setIsLogin] = useState(false); 
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -20,13 +20,13 @@ const AuthForm = ({ setToken }) => {
         localStorage.setItem('refreshToken', refreshToken);
         setToken(token);
         setError('');
-        navigate('/tasks'); // Redirect to tasks after successful login
+        navigate('/tasks'); 
       } else {
         alert('Registration successful, please log in.');
         setIsLogin(true);
       }
-      setUsername(''); // Clear the username field
-      setPassword(''); // Clear the password field
+      setUsername('');
+      setPassword(''); 
     } catch (error) {
       console.error('Error:', error);
       setError('Authentication failed. Please check your credentials and try again.');

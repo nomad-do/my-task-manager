@@ -29,8 +29,8 @@ function TaskManager({ onLogout }) {
         console.error("Error fetching tasks:", error);
         setError("Error fetching tasks");
         if (error.response && error.response.status === 403) {
-          localStorage.removeItem("token"); // Clear token if unauthorized
-          onLogout(); // Trigger logout
+          localStorage.removeItem("token"); 
+          onLogout(); 
         }
       }
     };
@@ -72,8 +72,8 @@ function TaskManager({ onLogout }) {
       console.error("Error adding task:", error);
       setError("Error adding task");
       if (error.response && error.response.status === 403) {
-        localStorage.removeItem("token"); // Clear token if unauthorized
-        onLogout(); // Trigger logout
+        localStorage.removeItem("token");
+        onLogout(); 
       }
     }
   };
@@ -106,8 +106,8 @@ function TaskManager({ onLogout }) {
       console.error("Error updating task:", error);
       setError("Error updating task");
       if (error.response && error.response.status === 403) {
-        localStorage.removeItem("token"); // Clear token if unauthorized
-        onLogout(); // Trigger logout
+        localStorage.removeItem("token");
+        onLogout(); 
       }
     }
   };
@@ -124,8 +124,8 @@ function TaskManager({ onLogout }) {
       console.error("Error deleting task:", error);
       setError("Error deleting task");
       if (error.response && error.response.status === 403) {
-        localStorage.removeItem("token"); // Clear token if unauthorized
-        onLogout(); // Trigger logout
+        localStorage.removeItem("token"); 
+        onLogout(); 
       }
     }
   };

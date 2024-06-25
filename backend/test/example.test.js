@@ -1,13 +1,13 @@
 const request = require('supertest');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const app = require('../app'); // Adjust the path to point to app.js correctly
-const User = require('../models/user'); // Adjust the path to your user model
+const app = require('../app');
+const User = require('../models/user'); 
 
 describe('User Profile API Tests', () => {
 
   beforeEach(async () => {
-    await User.deleteMany({}); // Clear users before each test
+    await User.deleteMany({}); 
   });
 
   it('should create a new user', async () => {
@@ -17,11 +17,11 @@ describe('User Profile API Tests', () => {
         username: 'newuser',
         password: 'password123'
       });
-    console.log(response.body); // Debug print response body
+    console.log(response.body); //
     expect(response.statusCode).toBe(201);
     expect(response.body.username).toBe('newuser');
     const user = await User.findOne({ username: 'newuser' });
-    console.log(user); // Debug print user from database
+    console.log(user); 
     expect(user).not.toBeNull();
     expect(user.username).toBe('newuser');
     const isMatch = await bcrypt.compare('password123', user.password);

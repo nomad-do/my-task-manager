@@ -1,20 +1,17 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-const logTokenClaims = require('../utils/logTokenClaims'); // Import the helper function
+const logTokenClaims = require('../utils/logTokenClaims');
 
-// Registration function
 exports.register = async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    // Check if the username already exists
     const existingUser = await User.findOne({ username });
     if (existingUser) {
       return res.status(400).json({ message: 'Username is already taken' });
     }
 
-    // Create a new user instance
     const user = new User({ username, password });
     await user.save();
 
@@ -24,7 +21,7 @@ exports.register = async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    logTokenClaims(token); // Log the token claims
+    logTokenClaims(token); 
 
     console.log('New user registered:', user);
     console.log('Generated JWT token:', token);
@@ -36,7 +33,6 @@ exports.register = async (req, res) => {
   }
 };
 
-// Login function
 exports.login = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -62,20 +58,19 @@ exports.login = async (req, res) => {
       { expiresIn: '7d' }
     );
 
-    logTokenClaims(token); // Log the token claims
+    logTokenClaims(token); 
 
     console.log('User logged in:', user);
     console.log('Generated JWT token:', token);
     console.log('Generated Refresh token:', refreshToken);
 
-    res.json({ token, refreshToken }); // Include the refresh token in the response
+    res.json({ token, refreshToken });
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({ message: 'An error occurred during login' });
   }
 };
 
-// Refresh token function
 exports.refreshToken = async (req, res) => {
   const refreshToken = req.headers['authorization'].split(' ')[1];
   if (!refreshToken) {
@@ -99,7 +94,7 @@ exports.refreshToken = async (req, res) => {
       { expiresIn: '7d' }
     );
 
-    logTokenClaims(newToken); // Log the token claims
+    logTokenClaims(newToken); 
 
     res.json({ token: newToken, refreshToken: newRefreshToken });
   });

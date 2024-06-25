@@ -5,7 +5,7 @@ exports.getTasks = async (req, res) => {
     const tasks = await Task.find({ user: req.user.userId }).populate('user');
     res.status(200).json(tasks);
   } catch (err) {
-    console.error('Error fetching tasks:', err); // Log the detailed error
+    console.error('Error fetching tasks:', err); 
     res.status(500).json({ message: "An error occurred fetching tasks." });
   }
 };
@@ -29,7 +29,7 @@ exports.createTask = async (req, res) => {
     const newTask = await task.save();
     res.status(201).json(newTask);
   } catch (err) {
-    console.error('Error creating task:', err); // Log the detailed error
+    console.error('Error creating task:', err); 
     res.status(500).json({ message: "An error occurred during task creation." });
   }
 };
@@ -57,7 +57,7 @@ exports.updateTask = async (req, res) => {
 
     res.status(200).json(updatedTask);
   } catch (err) {
-    console.error('Error updating task:', err); // Log the detailed error
+    console.error('Error updating task:', err); 
     res.status(500).json({ message: "An error occurred during task update." });
   }
 };
@@ -70,7 +70,7 @@ exports.deleteTask = async (req, res) => {
     }
     res.status(200).json({ message: 'Task deleted successfully' });
   } catch (err) {
-    console.error('Error deleting task:', err); // Log the detailed error
+    console.error('Error deleting task:', err); 
     res.status(500).json({ message: "An error occurred during task deletion." });
   }
 };

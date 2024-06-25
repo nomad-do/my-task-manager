@@ -16,7 +16,7 @@ function authenticateToken(req, res, next) {
     }
     console.log('Token verified successfully.');
     console.log('Decoded user:', user);
-    req.user = user; // Attach the decoded user information to the request
+    req.user = user; 
     next();
   });
 }

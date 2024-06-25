@@ -19,7 +19,7 @@ const refreshToken = async () => {
     return token;
   } catch (error) {
     console.error("Error refreshing token:", error);
-    // Handle error, e.g., log out user or show notification
+       
   }
 };
 

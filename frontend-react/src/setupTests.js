@@ -3,7 +3,6 @@ import fetchMock from "jest-fetch-mock";
 
 fetchMock.enableMocks();
 
-/* eslint-disable no-console */
 const originalError = console.error;
 
 beforeAll(() => {
@@ -18,4 +17,4 @@ beforeAll(() => {
 afterAll(() => {
   console.error = originalError;
 });
-/* eslint-enable no-console */
+

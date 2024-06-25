@@ -1,9 +1,8 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const router = express.Router();
-const User = require('../models/user'); // Correct path to user model
+const User = require('../models/user'); 
 
-// Create a new user
 router.post('/users', async (req, res) => {
   try {
     const user = new User(req.body);
@@ -14,7 +13,6 @@ router.post('/users', async (req, res) => {
   }
 });
 
-// Fetch a user profile
 router.get('/users/:username', async (req, res) => {
   try {
     const user = await User.findOne({ username: req.params.username });
@@ -27,7 +25,6 @@ router.get('/users/:username', async (req, res) => {
   }
 });
 
-// Update a user profile
 router.put('/users/:username', async (req, res) => {
   try {
     const user = await User.findOne({ username: req.params.username });
@@ -44,7 +41,6 @@ router.put('/users/:username', async (req, res) => {
   }
 });
 
-// Delete a user profile
 router.delete('/users/:username', async (req, res) => {
   try {
     const user = await User.findOneAndDelete({ username: req.params.username });

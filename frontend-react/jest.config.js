@@ -8,8 +8,7 @@ module.exports = {
     '/node_modules/(?!axios/.*)',
   ],
   moduleNameMapper: {
-    '^@components/(.*)$': '<rootDir>/src/components/$1',
-    // Add more aliases as needed
+    '^@components/(.*)$': '<rootDir>/src/components/$1',   
   },
   moduleFileExtensions: ['js', 'jsx', 'json', 'node'],
 };

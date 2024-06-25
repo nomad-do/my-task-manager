@@ -1,11 +1,10 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode"; // Correct default import
+import { jwtDecode } from "jwt-decode"; 
 import { useState, useEffect } from "react";
 import AuthForm from "./components/AuthForm";
 import TaskManager from "./components/TaskManager";
 import refreshToken from "./utils/refreshToken";
 
-// Utility function to check if a token is expired
 const isTokenExpired = (token) => {
   if (!token) return true;
 

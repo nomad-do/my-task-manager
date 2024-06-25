@@ -1,4 +1,4 @@
-import axiosInstance from "../axiosInstance"; // Ensure the correct import path
+import axiosInstance from "../axiosInstance"; 
 
 const register = async (userData) => {
   try {

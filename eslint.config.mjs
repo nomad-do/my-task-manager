@@ -1,4 +1,3 @@
-// eslint.config.mjs
 import eslint from "eslint";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
@@ -19,8 +18,8 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.es2021,
-        ...globals.node,  // Add Node.js globals
-        ...globals.jest,  // Add Jest globals
+        ...globals.node,  
+        ...globals.jest,  
       },
     },
     plugins: {
@@ -28,7 +27,7 @@ export default [
       reactHooks,
       jsxA11y,
       import: importPlugin,
-      prettier,  // Add Prettier plugin
+      prettier, 
     },
     rules: {
       "prettier/prettier": ["error", { endOfLine: "lf", singleQuote: true, printWidth: 100 }],
@@ -43,7 +42,7 @@ export default [
           namedComponents: "arrow-function",
         },
       ],
-      "react/prop-types": "off", // You can enable this if you want to enforce prop types
+      "react/prop-types": "off", 
     },
     settings: {
       react: {
