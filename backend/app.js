@@ -13,9 +13,9 @@ app.use(cors({
   credentials: true, 
 }));
 
-const testRoutes = require('./routes/testRoutes'); 
 const authRoutes = require('./routes/authRoutes'); 
 const taskRoutes = require('./routes/taskRoutes'); 
+const userRoutes = require('./routes/userRoutes');
 
 console.log('Loading app.js');
 
@@ -35,9 +35,10 @@ mongoose.connect(mongoURI, {
 app.use(express.static(path.join(__dirname, 'public'))); 
 
 app.use(express.json());
-app.use('/api/test', testRoutes); 
+
 app.use('/api/auth', authRoutes); 
 app.use('/api/tasks', taskRoutes); 
+app.use('/api/users', userRoutes);
 
 app.use(express.static(path.join(__dirname, 'public'))); 
 

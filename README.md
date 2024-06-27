@@ -133,6 +133,70 @@ Create a .env file in the root of the project and add the following:
 ### Step 6: Access the Application
 Visit http://localhost:3000 in your web browser to see the application running.
 
+## Project Structure
+
+A high-level overview of the project's structure:
+
+.
+├── API.md                  # API documentation
+├── README.md               # Project documentation
+├── backend                 # Backend server directory
+│   ├── app.js              # Main application file
+│   ├── controllers         # Controller files for handling requests
+│   │   ├── authController.js
+│   │   └── taskController.js
+│   ├── middlewares         # Middleware functions
+│   │   └── authenticateToken.js
+│   ├── models              # Database models
+│   │   ├── Task.js
+│   │   └── User.js
+│   ├── node_modules        # Backend dependencies
+│   ├── package-lock.json   # Lockfile for backend dependencies
+│   ├── package.json        # Backend dependencies configuration
+│   ├── public              # Publicly accessible files
+│   │   ├── backend-login.html
+│   │   └── backend-register.html
+│   ├── routes              # Routing files
+│   │   ├── authRoutes.js
+│   │   ├── taskRoutes.js
+│   │   └── userRoutes.js
+│   ├── test                # Backend test files
+│   │   └── example.test.js
+│   └── utils               # Utility functions
+│       └── logTokenClaims.js
+├── frontend-react          # Frontend React application directory
+│   ├── babel.config.js     # Babel configuration
+│   ├── build               # Build directory
+│   ├── jest.config.js      # Jest configuration
+│   ├── jsconfig.json       # JavaScript project configuration
+│   ├── node_modules        # Frontend dependencies
+│   ├── package-lock.json   # Lockfile for frontend dependencies
+│   ├── package.json        # Frontend dependencies configuration
+│   ├── public              # Publicly accessible files for frontend
+│   └── src                 # Source files for React application
+│       ├── App.css
+│       ├── App.js
+│       ├── axiosInstance.js
+│       ├── components      # React components
+│       │   ├── AuthForm.js
+│       │   ├── EditTask.js
+│       │   ├── Register.jsx
+│       │   ├── Register.test.js
+│       │   ├── TaskDetails.js
+│       │   ├── TaskList.js
+│       │   ├── TaskManager.js
+│       │   └── TaskModal.js
+│       ├── index.css
+│       ├── index.js
+│       ├── reportWebVitals.js
+│       ├── services        # Service files
+│       ├── setupTests.js
+│       ├── testUtils.js
+│       └── utils           # Utility functions
+└── public                  # Publicly accessible files
+    ├── login.html
+    └── register.html
+
 ## Usage Guide
 
 ### Adding a New Task
