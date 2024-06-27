@@ -10,7 +10,7 @@ To start using the API, you will need to register and obtain a Bearer token.
 
 ## Authentication
 
-### Register
+## Register
 
 - **URL**: `/auth/register`
 - **Method**: POST
@@ -91,6 +91,7 @@ To start using the API, you will need to register and obtain a Bearer token.
 ```
 
 **401 Unauthorized:**
+
 **When the user is not found:**
 
 ```json
@@ -107,13 +108,90 @@ To start using the API, you will need to register and obtain a Bearer token.
 }
 ```
 
-## Tasks
+# Users
+
+## Get User Profile
+
+**URL:** `/api/users/profile`
+
+**Method:** `GET`
+
+**Headers:**
+
+Authorization: Bearer <token>
+
+**Responses:**
+
+- **200 OK:**
+    ```json
+    {
+      "_id": "60c72b2f4f1a2c001c8d4c7a",
+      "username": "testuser"
+    }
+    ```
+
+- **404 Not Found:**
+    ```json
+    {
+      "message": "User not found."
+    }
+    ```
+
+- **500 Internal Server Error:**
+    ```json
+    {
+      "message": "An error occurred while fetching the user profile."
+    }
+    ```
+
+## Update User Profile
+
+**URL:** `/api/users/profile`
+
+**Method:** `PUT`
+
+### Headers:
+
+Authorization: Bearer <token>
+
+### Request Body:
+
+```json
+{
+  "username": "updateduser",
+  "password": "newpassword123"
+}
+
+**Responses:**
+
+- **200 OK:**
+    ```json
+    {
+      "message": "User profile updated successfully."
+    }
+    ```
+
+- **404 Not Found:**
+    ```json
+    {
+      "message": "User not found."
+    }
+    ```
+
+- **500 Internal Server Error:**
+    ```json
+    {
+      "message": "An error occurred while updating the user profile."
+    }
+    ```
+
+# Tasks
 
 ## Get Tasks
 
 - **URL**: `/api/tasks`
-- **Method**: GET
-- **Headers**:
+- **Method**: `GET`
+- **Headers:**
 
 ```http
 Authorization: Bearer <token>
