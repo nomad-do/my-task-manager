@@ -2,75 +2,49 @@ const Task = require('../models/Task');
 
 exports.getTasks = async (req, res) => {
   try {
-    const tasks = await Task.find({ user: req.user.userId }).populate('user');
-    res.status(200).json(tasks);
-  } catch (err) {
-    console.error('Error fetching tasks:', err); 
-    res.status(500).json({ message: "An error occurred fetching tasks." });
+    const tasks = await Task.find({ userId: req.user._id });
+    res.json(tasks);
+  } catch (error) {
+    console.error('Error fetching tasks:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 };
 
 exports.createTask = async (req, res) => {
-  const { title, urgency, importance, effort } = req.body;
-  if (!title || urgency == null || importance == null || effort == null) {
-    return res.status(400).json({ message: 'All fields must be filled: title, urgency, importance, and effort.' });
-  }
-
-  const task = new Task({
-    title,
-    urgency,
-    importance,
-    effort,
-    priority: urgency + importance + effort,
-    user: req.user.userId
-  });
-
+  const { title, urgency, importance, effort, priority } = req.body;
   try {
-    const newTask = await task.save();
+    const newTask = new Task({ title, urgency, importance, effort, priority, userId: req.user._id });
+    await newTask.save();
     res.status(201).json(newTask);
-  } catch (err) {
-    console.error('Error creating task:', err); 
-    res.status(500).json({ message: "An error occurred during task creation." });
+  } catch (error) {
+    console.error('Error creating task:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 };
 
 exports.updateTask = async (req, res) => {
-  const { title, urgency, importance, effort } = req.body;
-
-  if (!title || urgency == null || importance == null || effort == null) {
-    return res.status(400).json({ message: 'All fields must be filled: title, urgency, importance, and effort.' });
-  }
-
+  const { taskId } = req.params;
+  const { title, urgency, importance, effort, priority } = req.body;
   try {
-    const task = await Task.findById(req.params.id);
-    if (!task) {
-      return res.status(404).json({ message: "Task not found." });
-    }
-
-    task.title = title;
-    task.urgency = urgency;
-    task.importance = importance;
-    task.effort = effort;
-    task.priority = urgency + importance + effort;
-
-    const updatedTask = await task.save();
-
-    res.status(200).json(updatedTask);
-  } catch (err) {
-    console.error('Error updating task:', err); 
-    res.status(500).json({ message: "An error occurred during task update." });
+    const updatedTask = await Task.findByIdAndUpdate(
+      taskId,
+      { title, urgency, importance, effort, priority },
+      { new: true }
+    );
+    res.json(updatedTask);
+  } catch (error) {
+    console.error('Error updating task:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 };
 
 exports.deleteTask = async (req, res) => {
+  const { taskId } = req.params;
   try {
-    const task = await Task.findByIdAndDelete(req.params.id);
-    if (!task) {
-      return res.status(404).json({ message: 'Task not found.' });
-    }
-    res.status(200).json({ message: 'Task deleted successfully' });
-  } catch (err) {
-    console.error('Error deleting task:', err); 
-    res.status(500).json({ message: "An error occurred during task deletion." });
+    await Task.findByIdAndDelete(taskId);
+    res.status(204).end();
+  } catch (error) {
+    console.error('Error deleting task:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 };

@@ -1,10 +1,13 @@
+// authRoutes.js
 const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/authController');
 
 router.post('/register', authController.register);
 router.post('/login', authController.login);
-router.post('/refresh-token', authController.refreshToken); // Ensure this line is present
+router.post('/refresh-token', authController.refreshToken);
+router.get('/profile/:userId', authController.getProfile);
+router.put('/profile/:userId', authController.updateProfile);
 
 module.exports = router;
 

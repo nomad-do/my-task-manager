@@ -1,0 +1,34 @@
+{
+  "name": "my-task-manager",
+  "version": "1.0.0",
+  "description": "A task manager application",
+  "scripts": {
+    "start": "npm run start:backend & npm run start:frontend",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && webpack serve --config webpack.config.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.24.8",
+    "@babel/preset-react": "^7.24.7",
+    "@testing-library/jest-dom": "^6.4.7",
+    "babel-jest": "^29.7.0",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.5.1",
+    "dotenv": "^16.4.5",
+    "file-loader": "^6.2.0",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.3"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.24.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,12 @@
+const jwt = require('jsonwebtoken');
+
+function logTokenClaims(token) {
+  try {
+    const decoded = jwt.decode(token, { complete: true });
+    console.log('Token Claims:', decoded.payload);
+  } catch (error) {
+    console.error('Error decoding token:', error);
+  }
+}
+
+module.exports = logTokenClaims;
