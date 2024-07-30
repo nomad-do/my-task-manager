@@ -11,30 +11,44 @@ exports.getTasks = async (req, res) => {
 };
 
 exports.createTask = async (req, res) => {
-  const { title, urgency, importance, effort, priority } = req.body;
+  const { title, urgency, importance, effort } = req.body;
+  const total_score = urgency + importance + effort;
+  const priority = total_score; // Ensure priority is set for backward compatibility
+
   try {
-    const newTask = new Task({ title, urgency, importance, effort, priority, userId: req.user._id });
+    const newTask = new Task({ 
+      title, 
+      urgency, 
+      importance, 
+      effort, 
+      priority, 
+      total_score, 
+      userId: req.user._id 
+    });
     await newTask.save();
     res.status(201).json(newTask);
   } catch (error) {
     console.error('Error creating task:', error);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: 'Server error', details: error });
   }
 };
 
 exports.updateTask = async (req, res) => {
   const { taskId } = req.params;
-  const { title, urgency, importance, effort, priority } = req.body;
+  const { title, urgency, importance, effort } = req.body;
+  const total_score = urgency + importance + effort;
+  const priority = total_score; // Ensure priority is set for backward compatibility
+
   try {
     const updatedTask = await Task.findByIdAndUpdate(
       taskId,
-      { title, urgency, importance, effort, priority },
+      { title, urgency, importance, effort, priority, total_score },
       { new: true }
     );
     res.json(updatedTask);
   } catch (error) {
     console.error('Error updating task:', error);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: 'Server error', details: error });
   }
 };
 
@@ -48,3 +62,4 @@ exports.deleteTask = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
