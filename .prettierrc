@@ -1,9 +1,10 @@
 {
-  "endOfLine": "auto",
+  "endOfLine": "lf", 
   "singleQuote": false,
   "printWidth": 100,
   "trailingComma": "all",
   "semi": true,
   "jsxSingleQuote": false
 }
+
 
