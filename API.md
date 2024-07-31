@@ -193,9 +193,9 @@ Authorization: Bearer <token>
 - **Method**: `GET`
 - **Headers:**
 
-```http
-Authorization: Bearer <token>
-```
+    ```http
+    Authorization: Bearer <token>
+    ```
 
 ### Responses:
 
