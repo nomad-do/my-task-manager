@@ -1,7 +1,6 @@
 const User = require('../models/User');
 const mongoose = require('mongoose');
 
-// Get user profile
 exports.getProfile = async (req, res) => {
   const { userId } = req.params;
   if (!mongoose.Types.ObjectId.isValid(userId)) {
@@ -9,7 +8,7 @@ exports.getProfile = async (req, res) => {
   }
 
   try {
-    const user = await User.findById(userId).select('-password'); // Exclude password
+    const user = await User.findById(userId).select('-password'); 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
@@ -20,7 +19,6 @@ exports.getProfile = async (req, res) => {
   }
 };
 
-// Update user profile
 exports.updateProfile = async (req, res) => {
   const { userId } = req.params;
   const { username, password } = req.body;
@@ -44,7 +42,7 @@ exports.updateProfile = async (req, res) => {
     }
 
     if (username) user.username = username;
-    if (password) user.password = password; // Ensure to hash the password before saving
+    if (password) user.password = password; 
 
     await user.save();
 
