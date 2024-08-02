@@ -11,7 +11,6 @@ const taskSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-// Pre-save hook to calculate total_score and priority if not provided
 taskSchema.pre('save', function (next) {
   if (!this.total_score) {
     this.total_score = this.urgency + this.importance + this.effort;
