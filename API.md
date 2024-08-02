@@ -195,6 +195,39 @@ To start using the API, you will need to register and obtain a Bearer token.
 
 ## Tasks
 
+<<<<<<< HEAD
+### Create Task
+
+- **URL**: `/api/tasks`
+- **Method**: `POST`
+=======
+### Get Tasks
+
+- **URL**: `/api/tasks`
+- **Method**: `GET`
+- **Headers**:
+
+    ```http
+    Authorization: Bearer <token>
+    ```
+
+#### Responses:
+
+- **200 OK**:
+
+    ```json
+    {
+      "tasks": [
+        {
+          "_id": "60c72b2f4f1a2c001c8d4c7a",
+          "text": "New Task",
+          "completed": false,
+          "user": "60c72aaf4f1a2c001c8d4c79"
+        }
+      ]
+    }
+    ```
+
 ### Create Task
 
 - **URL**: `/api/tasks`
@@ -203,13 +236,72 @@ To start using the API, you will need to register and obtain a Bearer token.
 
     ```http
     Authorization: Bearer <token>
+    ```
+
+- **Body**:
+
+    ```json
+    {
+      "title": "Sample Task",
+      "urgency": 5,
+      "importance": 3,
+      "effort": 1,
+      "priority": 9,
+      "user": "664eec3fe2179f059ed2f365"
+    }
+    ```
+
+#### Responses:
+
+- **201 Created**:
+
+    ```json
+    {
+      "title": "Sample Task",
+      "urgency": 5,
+      "importance": 3,
+      "effort": 1,
+      "priority": 9,
+      "user": "664eec3fe2179f059ed2f365"
+    }
+    ```
+
+- **400 Bad Request**:
+
+    ```json
+    {
+      "message": "All fields must be filled: title, urgency, importance, and effort."
+    }
+    ```
+
+- **500 Internal Server Error**:
+
+    ```json
+    {
+      "message": "An error occurred during task creation."
+    }
+    ```
+
+### Update Task
+
+- **URL**: `/api/tasks/:id`
+- **Method**: `PUT`
+>>>>>>> 2a6e04a588537a23fd1039d498c72d909bb5f9e7
+- **Headers**:
+
+    ```http
+    Authorization: Bearer <token>
+<<<<<<< HEAD
     Content-Type: application/json
+=======
+>>>>>>> 2a6e04a588537a23fd1039d498c72d909bb5f9e7
     ```
 
 - **Request Body**:
 
     ```json
     {
+<<<<<<< HEAD
       "title": "Sample Task",
       "urgency": 5,
       "importance": 3,
@@ -218,10 +310,33 @@ To start using the API, you will need to register and obtain a Bearer token.
     ```
 
     Note: The `priority` and `total_score` will be automatically calculated by the server.
+=======
+      "title": "Updated Task Title",
+      "urgency": 4,
+      "importance": 2,
+      "effort": 3
+    }
+    ```
+
+#### Responses:
+>>>>>>> 2a6e04a588537a23fd1039d498c72d909bb5f9e7
 
 #### Responses:
 
+<<<<<<< HEAD
 - **201 Created**:
+=======
+    ```json
+    {
+      "title": "Updated Task Title",
+      "urgency": 4,
+      "importance": 2,
+      "effort": 3,
+      "priority": 9,
+      "user": "664eec3fe2179f059ed2f365"
+    }
+    ```
+>>>>>>> 2a6e04a588537a23fd1039d498c72d909bb5f9e7
 
     ```json
     {
@@ -235,6 +350,7 @@ To start using the API, you will need to register and obtain a Bearer token.
     }
     ```
 
+<<<<<<< HEAD
 #### Notes:
 
 - The `priority` and `total_score` fields are derived from the sum of `urgency`, `importance`, and `effort`.
@@ -273,6 +389,11 @@ To start using the API, you will need to register and obtain a Bearer token.
     ```json
     {
       "message": "All fields must be filled: title, urgency, importance, and effort."
+=======
+    ```json
+    {
+      "message": "Task not found."
+>>>>>>> 2a6e04a588537a23fd1039d498c72d909bb5f9e7
     }
     ```
 
@@ -280,6 +401,7 @@ To start using the API, you will need to register and obtain a Bearer token.
 
     ```json
     {
+<<<<<<< HEAD
       "message": "An error occurred during task creation."
     }
     ```
@@ -338,6 +460,8 @@ To start using the API, you will need to register and obtain a Bearer token.
 
     ```json
     {
+=======
+>>>>>>> 2a6e04a588537a23fd1039d498c72d909bb5f9e7
       "message": "An error occurred during task update."
     }
     ```
@@ -377,3 +501,7 @@ To start using the API, you will need to register and obtain a Bearer token.
       "message": "An error occurred during task deletion."
     }
     ```
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2a6e04a588537a23fd1039d498c72d909bb5f9e7
