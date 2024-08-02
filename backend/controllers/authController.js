@@ -76,11 +76,17 @@ exports.login = async (req, res) => {
 
     logTokenClaims(token);
 
+    console.log('Login successful');
     console.log('User logged in:', user);
     console.log('Generated JWT token:', token);
     console.log('Generated Refresh token:', refreshToken);
 
-    res.json({ token, refreshToken, userId: user._id });
+    res.json({ 
+        message: "Login successful", 
+        token, 
+        refreshToken, 
+        userId: user._id 
+    });
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({ message: 'An error occurred during login' });
@@ -163,7 +169,7 @@ exports.getProfile = async (req, res) => {
   }
 
   try {
-    const user = await User.findById(userId).select('-password'); // Exclude password
+    const user = await User.findById(userId).select('-password'); 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
