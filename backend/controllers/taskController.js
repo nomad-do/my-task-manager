@@ -13,7 +13,7 @@ exports.getTasks = async (req, res) => {
 exports.createTask = async (req, res) => {
   const { title, urgency, importance, effort } = req.body;
   const total_score = urgency + importance + effort;
-  const priority = total_score; // Ensure priority is set for backward compatibility
+  const priority = total_score; 
 
   try {
     const newTask = new Task({ 
