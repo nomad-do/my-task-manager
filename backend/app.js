@@ -6,11 +6,10 @@ const path = require('path');
 const authRoutes = require('./routes/authRoutes');
 const taskRoutes = require('./routes/taskRoutes');
 const userRoutes = require('./routes/userRoutes'); 
-const User = require('./models/User'); // Ensure this path is correct
+const User = require('./models/User'); 
 
 const app = express();
 
-// Middleware to parse JSON request bodies
 app.use(express.json());
 
 app.use(cors({
@@ -37,12 +36,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Route setup
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/users', userRoutes);
 
-// Error handling middleware
 app.use((err, _, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');
@@ -56,12 +53,11 @@ app.listen(PORT, () => {
 
 console.log('app.js loaded successfully');
 
-// Add route for creating dummy user
 app.post('/api/create-dummy-user', async (req, res) => {
   try {
     const dummyUser = new User({
-      username: 'testuser', // Simple dummy username
-      password: 'testpass123' // Simple dummy password
+      username: 'testuser', 
+      password: 'testpass123' 
     });
     await dummyUser.save();
     res.status(201).json({ message: 'Dummy user created successfully', dummyUser });
