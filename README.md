@@ -53,7 +53,7 @@ My-Task-Manager is also available as a Progressive Web App (PWA). This means you
 
 ## How to Install My-Task-Manager as a PWA
 
-1. **Open my-task=manager in your browser.**
+1. **Open my-task-manager in your browser.**
 2. **Click on the install prompt:**
    - On Chrome, click the install icon in the address bar or select "Add to Home Screen" from the menu.
    - On Safari, click the share button and select "Add to Home Screen."
@@ -74,7 +74,7 @@ Before you begin setting up the my-task-manager application, ensure you have the
 
 ## Installation Instructions
 
-Follow these steps to install and set up my-task-machine on your local development machine.
+Follow these steps to install and set up my-task-manager on your local development machine.
 
 ### Step 1: Install Node.js, npm, and MongoDB
 
@@ -88,24 +88,26 @@ Follow these steps to install and set up my-task-machine on your local developme
      ```
 
 2. **MongoDB:**
-   **Local Installation:**
-   - Download from the[MongoDB Download Center](https://www.mongodb.com/try/download/community).
-   **MongoDB Atlas:**
-   - Register and create a new cluster on[MongoDB Atlas](https://www.mongodb.com/cloud/atlas).   - 
+   - **Local Installation**: Download from the [MongoDB Download Center](https://www.mongodb.com/try/download/community).
+   - **MongoDB Atlas**: Register and create a new cluster on [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
   
 ### Step 2: Clone the Repository
+
    ```bash
    git clone https://github.com/nomad-do/my-task-manager.git
    cd my-task-manager
    ```
 
 ### Step 3: Install Project Dependencies
+
    ```bash
    npm install
    ```
 
 ### Step 4: Set Up Environment Variables
-Create a .env file in the root of the project and add the following:
+
+Create a `.env` file in the root of the project and add the following:
+
    ```bash
    DB_CONNECTION_STRING=mongodb://localhost/your-database
    JWT_SECRET=your_secret_key
@@ -117,6 +119,7 @@ Create a .env file in the root of the project and add the following:
 **Backend server:**
 
 1. To start the backend server, run:
+
     ```bash
     node app.js
     ```
@@ -124,78 +127,15 @@ Create a .env file in the root of the project and add the following:
 **Frontend application:**
 
 2. Open a new terminal, navigate to the frontend directory, and start the React application:
+
     ```bash
     cd frontend
     npm start
     ```
 
-
 ### Step 6: Access the Application
-Visit http://localhost:3000 in your web browser to see the application running.
 
-## Project Structure
-
-A high-level overview of the project's structure:
-
-.
-├── API.md                  # API documentation
-├── README.md               # Project documentation
-├── backend                 # Backend server directory
-│   ├── app.js              # Main application file
-│   ├── controllers         # Controller files for handling requests
-│   │   ├── authController.js
-│   │   └── taskController.js
-│   ├── middlewares         # Middleware functions
-│   │   └── authenticateToken.js
-│   ├── models              # Database models
-│   │   ├── Task.js
-│   │   └── User.js
-│   ├── node_modules        # Backend dependencies
-│   ├── package-lock.json   # Lockfile for backend dependencies
-│   ├── package.json        # Backend dependencies configuration
-│   ├── public              # Publicly accessible files
-│   │   ├── backend-login.html
-│   │   └── backend-register.html
-│   ├── routes              # Routing files
-│   │   ├── authRoutes.js
-│   │   ├── taskRoutes.js
-│   │   └── userRoutes.js
-│   ├── test                # Backend test files
-│   │   └── example.test.js
-│   └── utils               # Utility functions
-│       └── logTokenClaims.js
-├── frontend-react          # Frontend React application directory
-│   ├── babel.config.js     # Babel configuration
-│   ├── build               # Build directory
-│   ├── jest.config.js      # Jest configuration
-│   ├── jsconfig.json       # JavaScript project configuration
-│   ├── node_modules        # Frontend dependencies
-│   ├── package-lock.json   # Lockfile for frontend dependencies
-│   ├── package.json        # Frontend dependencies configuration
-│   ├── public              # Publicly accessible files for frontend
-│   └── src                 # Source files for React application
-│       ├── App.css
-│       ├── App.js
-│       ├── axiosInstance.js
-│       ├── components      # React components
-│       │   ├── AuthForm.js
-│       │   ├── EditTask.js
-│       │   ├── Register.jsx
-│       │   ├── Register.test.js
-│       │   ├── TaskDetails.js
-│       │   ├── TaskList.js
-│       │   ├── TaskManager.js
-│       │   └── TaskModal.js
-│       ├── index.css
-│       ├── index.js
-│       ├── reportWebVitals.js
-│       ├── services        # Service files
-│       ├── setupTests.js
-│       ├── testUtils.js
-│       └── utils           # Utility functions
-└── public                  # Publicly accessible files
-    ├── login.html
-    └── register.html
+Visit `http://localhost:3000` in your web browser to see the application running.
 
 ## Usage Guide
 
@@ -230,7 +170,27 @@ To delete a task, follow these steps:
 
 - Understand that tasks will be automatically ordered by priority.
 - The highest priority tasks appear at the top of the list.
-  
+
+## Testing
+
+We use Jest for testing to ensure the API endpoints are reliable and perform as expected. To run the tests, follow these steps:
+
+1. **Install Testing Dependencies**: Ensure all testing dependencies are installed by running:
+    ```bash
+    npm install
+    ```
+
+2. **Run Tests**: To run all tests, use:
+    ```bash
+    npm test
+    ```
+
+3. **View Test Coverage**: To view a coverage report, run:
+    ```bash
+    npm run test:coverage
+    ```
+
 ## License
 
 This project is licensed under the MIT License.
+```
