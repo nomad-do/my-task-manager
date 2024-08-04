@@ -39,16 +39,19 @@ My-Task-Manager is also available as a Progressive Web App (PWA). This means you
 ### Performance
 
 - **Fast Loading**: PWAs are optimized for fast loading times.
+  
 - **Efficient Resource Use**: They use caching strategies to minimize resource use and improve performance.
 
 ### Cross-Platform Compatibility
 
 - **Runs on Any Device**: Whether you’re using a desktop, tablet, or smartphone, the PWA adapts to your device’s screen size and resolution.
+  
 - **Consistent Experience**: Enjoy a consistent user experience across different devices and operating systems.
 
 ### Secure and Reliable
 
 - **HTTPS**: PWAs are served over HTTPS, ensuring a secure connection and protecting your data.
+  
 - **Automatic Updates**: You’ll always have the latest version without needing to manually update the app.
 
 ## How to Install My-Task-Manager as a PWA
@@ -135,7 +138,7 @@ Create a `.env` file in the root of the project and add the following:
 
 ### Step 6: Access the Application
 
-Visit `http://localhost:3000` in your web browser to see the application running.
+Visit `http://localhost:3001` in your web browser to see the application running.
 
 ## Usage Guide
 

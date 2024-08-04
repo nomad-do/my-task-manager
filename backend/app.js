@@ -27,6 +27,10 @@ const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/my-task-man
 mongoose.connect(mongoURI, {
   serverSelectionTimeoutMS: 30000,
   socketTimeoutMS: 45000,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true,
 })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));

@@ -10,6 +10,8 @@
 
 # Dependency directories
 **/node_modules/
+**/.cache/
+**/node_modules/.cache/
 /.pnp
 .pnp.js
 
@@ -29,4 +31,6 @@ yarn-error.log*
 
 # Ignore VS Code workspace settings
 .vscode/
+
+echo "**/node_modules/.cache/" >>
 

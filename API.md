@@ -12,20 +12,20 @@ To start using the API, you will need to register and obtain a Bearer token.
 
 ### Register
 
-- **URL**: `/auth/register`
-- **Method**: `POST`
-- **Body**:
+- **URL:** `/auth/register`
+- **Method:** `POST`
+- **Body:**
 
-    ```json
-    {
-      "username": "string",
-      "password": "string"
-    }
-    ```
+  ```json
+  {
+    "username": "string",
+    "password": "string"
+  }
+  ```
 
-#### Responses:
+- **Responses:**
 
-- **201 Created**:
+  - `201 Created:`
 
     ```json
     {
@@ -33,9 +33,8 @@ To start using the API, you will need to register and obtain a Bearer token.
     }
     ```
 
-- **400 Bad Request**:
-  
-  When username or password is missing:
+  - `400 Bad Request:`  
+    When username or password is missing:
 
     ```json
     {
@@ -43,7 +42,7 @@ To start using the API, you will need to register and obtain a Bearer token.
     }
     ```
 
-  When the username is already taken:
+    When the username is already taken:
 
     ```json
     {
@@ -51,7 +50,7 @@ To start using the API, you will need to register and obtain a Bearer token.
     }
     ```
 
-- **500 Internal Server Error**:
+  - `500 Internal Server Error:`
 
     ```json
     {
@@ -61,20 +60,20 @@ To start using the API, you will need to register and obtain a Bearer token.
 
 ### Login
 
-- **URL**: `/auth/login`
-- **Method**: `POST`
-- **Request Body**:
+- **URL:** `/auth/login`
+- **Method:** `POST`
+- **Request Body:**
 
-    ```json
-    {
-      "username": "string",
-      "password": "string"
-    }
-    ```
+  ```json
+  {
+    "username": "string",
+    "password": "string"
+  }
+  ```
 
-#### Responses:
+- **Responses:**
 
-- **200 OK**:
+  - `200 OK:`
 
     ```json
     {
@@ -83,7 +82,7 @@ To start using the API, you will need to register and obtain a Bearer token.
     }
     ```
 
-- **400 Bad Request**:
+  - `400 Bad Request:`
 
     ```json
     {
@@ -91,9 +90,8 @@ To start using the API, you will need to register and obtain a Bearer token.
     }
     ```
 
-- **401 Unauthorized**:
-  
-  When the user is not found:
+  - `401 Unauthorized:`  
+    When the user is not found:
 
     ```json
     {
@@ -101,7 +99,7 @@ To start using the API, you will need to register and obtain a Bearer token.
     }
     ```
 
-  When the password is invalid:
+    When the password is invalid:
 
     ```json
     {
@@ -113,17 +111,17 @@ To start using the API, you will need to register and obtain a Bearer token.
 
 ### Get User Profile
 
-- **URL**: `/api/users/profile`
-- **Method**: `GET`
-- **Headers**:
+- **URL:** `/api/users/profile`
+- **Method:** `GET`
+- **Headers:**
 
-    ```http
-    Authorization: Bearer <token>
-    ```
+  ```text
+  Authorization: Bearer <token>
+  ```
 
-#### Responses:
+- **Responses:**
 
-- **200 OK**:
+  - `200 OK:`
 
     ```json
     {
@@ -132,7 +130,7 @@ To start using the API, you will need to register and obtain a Bearer token.
     }
     ```
 
-- **404 Not Found**:
+  - `404 Not Found:`
 
     ```json
     {
@@ -140,7 +138,7 @@ To start using the API, you will need to register and obtain a Bearer token.
     }
     ```
 
-- **500 Internal Server Error**:
+  - `500 Internal Server Error:`
 
     ```json
     {
@@ -150,26 +148,26 @@ To start using the API, you will need to register and obtain a Bearer token.
 
 ### Update User Profile
 
-- **URL**: `/api/users/profile`
-- **Method**: `PUT`
-- **Headers**:
+- **URL:** `/api/users/profile`
+- **Method:** `PUT`
+- **Headers:**
 
-    ```http
-    Authorization: Bearer <token>
-    ```
+  ```text
+  Authorization: Bearer <token>
+  ```
 
-- **Request Body**:
+- **Request Body:**
 
-    ```json
-    {
-      "username": "updateduser",
-      "password": "newpassword123"
-    }
-    ```
+  ```json
+  {
+    "username": "updateduser",
+    "password": "newpassword123"
+  }
+  ```
 
-#### Responses:
+- **Responses:**
 
-- **200 OK**:
+  - `200 OK:`
 
     ```json
     {
@@ -177,7 +175,7 @@ To start using the API, you will need to register and obtain a Bearer token.
     }
     ```
 
-- **404 Not Found**:
+  - `404 Not Found:`
 
     ```json
     {
@@ -185,7 +183,7 @@ To start using the API, you will need to register and obtain a Bearer token.
     }
     ```
 
-- **500 Internal Server Error**:
+  - `500 Internal Server Error:`
 
     ```json
     {
@@ -195,148 +193,69 @@ To start using the API, you will need to register and obtain a Bearer token.
 
 ## Tasks
 
-<<<<<<< HEAD
-### Create Task
-
-- **URL**: `/api/tasks`
-- **Method**: `POST`
-=======
 ### Get Tasks
 
-- **URL**: `/api/tasks`
-- **Method**: `GET`
-- **Headers**:
+- **URL:** `/api/tasks`
+- **Method:** `GET`
+- **Headers:**
 
-    ```http
-    Authorization: Bearer <token>
-    ```
+  ```text
+  Authorization: Bearer <token>
+  ```
 
-#### Responses:
+- **Responses:**
 
-- **200 OK**:
+  - `200 OK:`
 
     ```json
     {
       "tasks": [
         {
           "_id": "60c72b2f4f1a2c001c8d4c7a",
-          "text": "New Task",
-          "completed": false,
-          "user": "60c72aaf4f1a2c001c8d4c79"
+          "title": "Sample Task",
+          "urgency": 5,
+          "importance": 3,
+          "effort": 1,
+          "priority": 9,
+          "total_score": 9,
+          "user": "664eec3fe2179f059ed2f365"
         }
       ]
     }
     ```
 
+  - `400 Bad Request:`
+
+    ```json
+    {
+      "message": "All fields must be filled: title, urgency, importance, and effort."
+    }
+    ```
+
 ### Create Task
 
-- **URL**: `/api/tasks`
-- **Method**: `POST`
-- **Headers**:
+- **URL:** `/api/tasks`
+- **Method:** `POST`
+- **Headers:**
 
-    ```http
-    Authorization: Bearer <token>
-    ```
+  ```text
+  Authorization: Bearer <token>
+  ```
 
-- **Body**:
+- **Body:**
 
-    ```json
-    {
-      "title": "Sample Task",
-      "urgency": 5,
-      "importance": 3,
-      "effort": 1,
-      "priority": 9,
-      "user": "664eec3fe2179f059ed2f365"
-    }
-    ```
+  ```json
+  {
+    "title": "Sample Task",
+    "urgency": 5,
+    "importance": 3,
+    "effort": 1
+  }
+  ```
 
-#### Responses:
+- **Responses:**
 
-- **201 Created**:
-
-    ```json
-    {
-      "title": "Sample Task",
-      "urgency": 5,
-      "importance": 3,
-      "effort": 1,
-      "priority": 9,
-      "user": "664eec3fe2179f059ed2f365"
-    }
-    ```
-
-- **400 Bad Request**:
-
-    ```json
-    {
-      "message": "All fields must be filled: title, urgency, importance, and effort."
-    }
-    ```
-
-- **500 Internal Server Error**:
-
-    ```json
-    {
-      "message": "An error occurred during task creation."
-    }
-    ```
-
-### Update Task
-
-- **URL**: `/api/tasks/:id`
-- **Method**: `PUT`
->>>>>>> 2a6e04a588537a23fd1039d498c72d909bb5f9e7
-- **Headers**:
-
-    ```http
-    Authorization: Bearer <token>
-<<<<<<< HEAD
-    Content-Type: application/json
-=======
->>>>>>> 2a6e04a588537a23fd1039d498c72d909bb5f9e7
-    ```
-
-- **Request Body**:
-
-    ```json
-    {
-<<<<<<< HEAD
-      "title": "Sample Task",
-      "urgency": 5,
-      "importance": 3,
-      "effort": 1
-    }
-    ```
-
-    Note: The `priority` and `total_score` will be automatically calculated by the server.
-=======
-      "title": "Updated Task Title",
-      "urgency": 4,
-      "importance": 2,
-      "effort": 3
-    }
-    ```
-
-#### Responses:
->>>>>>> 2a6e04a588537a23fd1039d498c72d909bb5f9e7
-
-#### Responses:
-
-<<<<<<< HEAD
-- **201 Created**:
-=======
-    ```json
-    {
-      "title": "Updated Task Title",
-      "urgency": 4,
-      "importance": 2,
-      "effort": 3,
-      "priority": 9,
-      "user": "664eec3fe2179f059ed2f365"
-    }
-    ```
->>>>>>> 2a6e04a588537a23fd1039d498c72d909bb5f9e7
+  - `201 Created:`
 
     ```json
     {
@@ -350,85 +269,49 @@ To start using the API, you will need to register and obtain a Bearer token.
     }
     ```
 
-<<<<<<< HEAD
-#### Notes:
-
-- The `priority` and `total_score` fields are derived from the sum of `urgency`, `importance`, and `effort`.
-- The `user` field represents the ID of the user who created the task.
-
-### Get Tasks
-
-- **URL**: `/api/tasks`
-- **Method**: `GET`
-- **Headers**:
-
-    ```http
-    Authorization: Bearer <token>
-    ```
-
-#### Responses:
-
-- **200 OK**:
-
-    ```json
-    [
-      {
-        "title": "Sample Task",
-        "urgency": 5,
-        "importance": 3,
-        "effort": 1,
-        "priority": 9,
-        "total_score": 9,
-        "user": "664eec3fe2179f059ed2f365"
-      }
-    ]
-    ```
-
- - **400 Bad Request**:
+  - `400 Bad Request:`
 
     ```json
     {
       "message": "All fields must be filled: title, urgency, importance, and effort."
-=======
-    ```json
-    {
-      "message": "Task not found."
->>>>>>> 2a6e04a588537a23fd1039d498c72d909bb5f9e7
     }
     ```
 
-- **500 Internal Server Error**:
+  - `500 Internal Server Error:`
 
     ```json
     {
-<<<<<<< HEAD
       "message": "An error occurred during task creation."
     }
     ```
+
 ### Update Task
 
-- **URL**: `/api/tasks/:taskId`
-- **Method**: `PUT`
-- **Headers**:
-  - `Authorization`: `Bearer <your_jwt_token>`
-  - `Content-Type`: `application/json`
+- **URL:** `/api/tasks/:taskId`
+- **Method:** `PUT`
+- **Headers:**
 
-- **Request Body**:
+  ```text
+  Authorization: Bearer <token>
+  Content-Type: application/json
+  ```
 
-    ```json
-    {
-      "title": "Updated Task Title",
-      "urgency": 4,
-      "importance": 2,
-      "effort": 3
-    }
-    ```
+- **Request Body:**
 
-    Note: The `total_score` and `priority` will be automatically calculated by the server.
+  ```json
+  {
+    "title": "Updated Task Title",
+    "urgency": 4,
+    "importance": 2,
+    "effort": 3
+  }
+  ```
 
-#### Responses:
+- **Note:** The `total_score` and `priority` will be automatically calculated by the server.
 
-- **200 OK**:
+- **Responses:**
+
+  - `200 OK:`
 
     ```json
     {
@@ -442,13 +325,7 @@ To start using the API, you will need to register and obtain a Bearer token.
     }
     ```
 
-#### Notes:
-
-- The `priority` and `total_score` are derived from the sum of `urgency`, `importance`, and `effort`.
-- The `user` field represents the ID of the user who owns the task.
-
-
-- **404 Not Found**:
+  - `404 Not Found:`
 
     ```json
     {
@@ -456,29 +333,27 @@ To start using the API, you will need to register and obtain a Bearer token.
     }
     ```
 
-- **500 Internal Server Error**:
+  - `500 Internal Server Error:`
 
     ```json
     {
-=======
->>>>>>> 2a6e04a588537a23fd1039d498c72d909bb5f9e7
       "message": "An error occurred during task update."
     }
     ```
 
 ### Delete Task
 
-- **URL**: `/api/tasks/:id`
-- **Method**: `DELETE`
-- **Headers**:
+- **URL:** `/api/tasks/:id`
+- **Method:** `DELETE`
+- **Headers:**
 
-    ```http
-    Authorization: Bearer <token>
-    ```
+  ```text
+  Authorization: Bearer <token>
+  ```
 
-#### Responses:
+- **Responses:**
 
-- **200 OK**:
+  - `200 OK:`
 
     ```json
     {
@@ -486,7 +361,7 @@ To start using the API, you will need to register and obtain a Bearer token.
     }
     ```
 
-- **404 Not Found**:
+  - `404 Not Found:`
 
     ```json
     {
@@ -494,14 +369,10 @@ To start using the API, you will need to register and obtain a Bearer token.
     }
     ```
 
-- **500 Internal Server Error**:
+  - `500 Internal Server Error:`
 
     ```json
     {
       "message": "An error occurred during task deletion."
     }
     ```
-<<<<<<< HEAD
-=======
-
->>>>>>> 2a6e04a588537a23fd1039d498c72d909bb5f9e7
