@@ -34,6 +34,7 @@ To start using the API, you will need to register and obtain a Bearer token.
     ```
 
   - `400 Bad Request:`  
+  
     When username or password is missing:
 
     ```json
@@ -91,6 +92,7 @@ To start using the API, you will need to register and obtain a Bearer token.
     ```
 
   - `401 Unauthorized:`  
+  
     When the user is not found:
 
     ```json
