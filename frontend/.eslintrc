@@ -28,10 +28,10 @@
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "quotes": ["error", "single"],
-    "no-undef": "off" // Disable no-undef rule globally
+    "no-undef": "off"
   },
   "globals": {
-    "process": "readonly" // Define process as a global variable
+    "process": "readonly" 
   },
   "settings": {
     "react": {
