@@ -48,7 +48,9 @@ const AuthForm = ({ setToken }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}
+    style={{ marginLeft: '20px', marginTop: '20px' }}
+    >
       <h2>{isLogin ? 'Login' : 'Register'}</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
