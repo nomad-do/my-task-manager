@@ -188,11 +188,6 @@ We use Jest for testing to ensure the API endpoints are reliable and perform as 
     npm test
     ```
 
-3. **View Test Coverage**: To view a coverage report, run:
-    ```bash
-    npm run test:coverage
-    ```
-
 ## License
 
 This project is licensed under the MIT License.
