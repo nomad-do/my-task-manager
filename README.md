@@ -16,7 +16,7 @@ Welcome to My-Task-Manager, a comprehensive tool designed to help you effortless
 ### Focused Execution
 - **Minimized Distractions**: Stay on track by concentrating on your highest-priority tasks until they are completed.
 
-## Progressive Web App (PWA) Benefits
+## Progressive Web App (PWA)
 
 My-Task-Manager is also available as a Progressive Web App (PWA), providing a seamless, app-like experience on any device.
 
@@ -155,7 +155,7 @@ We use Jest for testing API endpoints. To run tests:
 1. **Install Testing Dependencies**:
 
     ```bash
-    npm install
+    npm install --save-dev jest
     ```
 
 2. **Run Tests**:
