@@ -1,0 +1,13 @@
+services:
+  frontend:
+    image: my-task-manager-frontend
+    ports:
+      - "3000:3000"
+  backend:
+    image: my-task-manager-backend
+    ports:
+      - "3001:3001"
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"

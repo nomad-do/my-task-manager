@@ -14,11 +14,17 @@ const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/my-task-man
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+const allowedOrigins = [
+  process.env.FRONTEND_URL || 'http://localhost:3000', 
+];
+
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: allowedOrigins,
   methods: 'POST, GET, PUT, DELETE',
   credentials: true,
 }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/auth', authRoutes);
