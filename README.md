@@ -168,3 +168,4 @@ We use Jest for testing API endpoints. To run tests:
 
 This project is licensed under the MIT License.
 
+Trigger workflow run
