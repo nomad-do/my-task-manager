@@ -3,10 +3,10 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main  # or your preferred branch
+      - master  # Changed from 'main' to 'master'
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build:
@@ -39,4 +39,4 @@ jobs:
 
     - name: Push Docker image
       run: |
-        docker push dower983/my-task-manager:latest   
+        docker push dower983/my-task-manager:latest
