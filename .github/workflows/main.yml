@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - master  # Changed from 'main' to 'master'
+      - master  # or your preferred branch
   pull_request:
     branches:
       - master
@@ -19,13 +19,21 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
 
-    - name: Build Docker image
+    - name: Build Backend Docker image
       run: |
-        docker build . -t my-app:latest
+        docker build -f backend/Dockerfile -t my-backend-app:latest .
 
-    - name: Run tests
+    - name: Build Frontend Docker image
       run: |
-        docker run --rm my-app:latest npm test
+        docker build -f frontend/Dockerfile -t my-frontend-app:latest .
+
+    - name: Run Backend tests
+      run: |
+        docker run --rm my-backend-app:latest npm test
+
+    - name: Run Frontend tests
+      run: |
+        docker run --rm my-frontend-app:latest npm test
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
@@ -33,10 +41,12 @@ jobs:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-    - name: Tag Docker image
+    - name: Tag and Push Backend Docker image
       run: |
-        docker tag my-app:latest dower983/my-task-manager:latest
+        docker tag my-backend-app:latest dower983/my-task-manager-backend:latest
+        docker push dower983/my-task-manager-backend:latest
 
-    - name: Push Docker image
+    - name: Tag and Push Frontend Docker image
       run: |
-        docker push dower983/my-task-manager:latest
+        docker tag my-frontend-app:latest dower983/my-task-manager-frontend:latest
+        docker push dower983/my-task-manager-frontend:latest
