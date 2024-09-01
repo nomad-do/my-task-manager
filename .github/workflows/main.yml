@@ -1,3 +1,13 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,12 +33,12 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Tag and Push Backend Docker image
+      - name: Push Backend Docker image
         run: |
-          docker tag my-backend-app:latest dower983/my-task-manager-backend:latest
-          docker push dower983/my-task-manager-backend:latest
+          docker tag my-backend-app:latest my-dockerhub-username/my-backend-app:latest
+          docker push my-dockerhub-username/my-backend-app:latest
 
-      - name: Tag and Push Frontend Docker image
+      - name: Push Frontend Docker image
         run: |
-          docker tag my-frontend-app:latest dower983/my-task-manager-frontend:latest
-          docker push dower983/my-task-manager-frontend:latest
+          docker tag my-frontend-app:latest my-dockerhub-username/my-frontend-app:latest
+          docker push my-dockerhub-username/my-frontend-app:latest
