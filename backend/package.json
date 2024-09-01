@@ -4,7 +4,8 @@
   "description": "Backend for my task manager application",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
