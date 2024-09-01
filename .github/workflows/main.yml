@@ -33,7 +33,10 @@ jobs:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
+    - name: Tag Docker image
+      run: |
+        docker tag my-app:latest dower983/my-task-manager:latest
+
     - name: Push Docker image
       run: |
-        docker tag my-app:latest dower983/my-task-manager
-        docker push dower983/my-task-manager:latest
+        docker push dower983/my-task-manager:latest   
