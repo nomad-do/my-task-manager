@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - master
+      - master # or your preferred branch
   pull_request:
     branches:
       - master
@@ -21,11 +21,11 @@ jobs:
 
       - name: Build Backend Docker image
         run: |
-          docker build -f backend/Dockerfile -t my-backend-app:latest .
+          docker build -f backend/Dockerfile -t my-backend-app:latest backend/
 
       - name: Build Frontend Docker image
         run: |
-          docker build -f frontend/Dockerfile -t my-frontend-app:latest .
+          docker build -f frontend/Dockerfile -t my-frontend-app:latest frontend/
 
       - name: Run Backend tests
         run: |
