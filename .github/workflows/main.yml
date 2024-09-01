@@ -3,37 +3,50 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main  # or your preferred branch
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
-    - name: Build Docker image
-      run: |
-        docker build . -t my-app:latest
+      - name: Build Backend Docker image
+        run: |
+          docker build -f backend/Dockerfile -t my-backend-app:latest .
 
-    - name: Run tests
-      run: |
-        docker run --rm my-app:latest npm test
+      - name: Build Frontend Docker image
+        run: |
+          docker build -f frontend/Dockerfile -t my-frontend-app:latest .
 
-    - name: Log in to Docker Hub
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKER_HUB_USERNAME }}
-        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      - name: Run Backend tests
+        run: |
+          docker run --rm my-backend-app:latest npm test
 
-    - name: Push Docker image
-      run: |
-        docker tag my-app:latest dower983/my-task-manager
-        docker push dower983/my-task-manager:latest
+      - name: Run Frontend tests
+        run: |
+          docker run --rm my-frontend-app:latest npm test
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Tag and Push Backend Docker image
+        run: |
+          docker tag my-backend-app:latest dower983/my-task-manager-backend:latest
+          docker push dower983/my-task-manager-backend:latest
+
+      - name: Tag and Push Frontend Docker image
+        run: |
+          docker tag my-frontend-app:latest dower983/my-task-manager-frontend:latest
+          docker push dower983/my-task-manager-frontend:latest
