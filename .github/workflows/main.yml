@@ -19,13 +19,10 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      - name: Build Backend Docker image
+      - name: Build Docker image
         run: |
-          docker build -f backend/Dockerfile -t my-backend-app:latest backend/
-
-      - name: Build Frontend Docker image
-        run: |
-          docker build -f frontend/Dockerfile -t my-frontend-app:latest frontend/
+          docker build ./backend -t my-backend-app:latest
+          docker build ./frontend -t my-frontend-app:latest
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
@@ -33,12 +30,10 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Push Backend Docker image
+      - name: Push Docker image
         run: |
-          docker tag my-backend-app:latest my-dockerhub-username/my-backend-app:latest
-          docker push my-dockerhub-username/my-backend-app:latest
+          docker tag my-backend-app:latest your-dockerhub-username/my-backend-app:latest
+          docker push your-dockerhub-username/my-backend-app:latest
 
-      - name: Push Frontend Docker image
-        run: |
-          docker tag my-frontend-app:latest my-dockerhub-username/my-frontend-app:latest
-          docker push my-dockerhub-username/my-frontend-app:latest
+          docker tag my-frontend-app:latest your-dockerhub-username/my-frontend-app:latest
+          docker push your-dockerhub-username/my-frontend-app:latest
