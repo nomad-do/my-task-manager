@@ -7,33 +7,24 @@ on:
   pull_request:
     branches:
       - master
+  workflow_dispatch:
 
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-
-      - name: Build Docker image
-        run: |
-          docker build ./backend -t my-backend-app:latest
-          docker build ./frontend -t my-frontend-app:latest
+        uses: docker/setup-buildx-action@v3
 
       - name: Log in to Docker Hub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+        uses: docker/login-action@v3
 
-      - name: Push Docker image
+      - name: Build and push Docker image
         run: |
-          docker tag my-backend-app:latest your-dockerhub-username/my-backend-app:latest
-          docker push your-dockerhub-username/my-backend-app:latest
-
-          docker tag my-frontend-app:latest your-dockerhub-username/my-frontend-app:latest
-          docker push your-dockerhub-username/my-frontend-app:latest
+          docker build -t my-app:latest .
+          docker tag my-app:latest ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/my-app:latest
