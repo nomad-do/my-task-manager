@@ -14,23 +14,45 @@ jobs:
 
     steps:
       - name: Checkout code
+        run: |
+          echo "Checking out code..."
         uses: actions/checkout@v3
 
       - name: Set up Docker Buildx
+        run: |
+          echo "Setting up Docker Buildx..."
         uses: docker/setup-buildx-action@v2
 
-      - name: Build Docker images
+      - name: Build Docker images - Backend
         run: |
+          echo "Starting to build backend Docker image..."
           docker build -t dower983/my-task-manager-backend:latest -f backend/Dockerfile .
+          echo "Backend Docker image built successfully."
+
+      - name: Build Docker images - Frontend
+        run: |
+          echo "Starting to build frontend Docker image..."
           docker build -t dower983/my-task-manager-frontend:latest -f frontend/Dockerfile .
+          echo "Frontend Docker image built successfully."
 
       - name: Log in to Docker Hub
+        run: |
+          echo "Logging in to Docker Hub..."
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-
-      - name: Push Docker images
         run: |
+          echo "Logged in to Docker Hub successfully."
+
+      - name: Push Docker images - Backend
+        run: |
+          echo "Pushing backend Docker image to Docker Hub..."
           docker push dower983/my-task-manager-backend:latest
+          echo "Backend Docker image pushed successfully."
+
+      - name: Push Docker images - Frontend
+        run: |
+          echo "Pushing frontend Docker image to Docker Hub..."
           docker push dower983/my-task-manager-frontend:latest
+          echo "Frontend Docker image pushed successfully."
