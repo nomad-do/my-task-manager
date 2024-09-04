@@ -3,12 +3,14 @@ FROM node:lts-alpine AS build
 
 WORKDIR /app
 
-# Copy only the package files and install dependencies
-COPY package.json package-lock.json ./
+# Copy package.json and package-lock.json from the frontend directory
+COPY frontend/package.json frontend/package-lock.json ./
+
+# Install dependencies
 RUN npm install
 
-# Copy the rest of the application code
-COPY . .
+# Copy the rest of the application code from the frontend directory
+COPY frontend/ .
 
 # Build the React app
 RUN npm run build
