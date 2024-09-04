@@ -14,14 +14,14 @@ jobs:
 
     steps:
       - name: Checkout code
-        run: |
-          echo "Checking out code..."
         uses: actions/checkout@v3
+        # This step uses a GitHub action, so no run command is included
+        # Custom logging is not applicable directly here
 
       - name: Set up Docker Buildx
-        run: |
-          echo "Setting up Docker Buildx..."
         uses: docker/setup-buildx-action@v2
+        # This step uses a GitHub action, so no run command is included
+        # Custom logging is not applicable directly here
 
       - name: Build Docker images - Backend
         run: |
@@ -36,14 +36,12 @@ jobs:
           echo "Frontend Docker image built successfully."
 
       - name: Log in to Docker Hub
-        run: |
-          echo "Logging in to Docker Hub..."
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-        run: |
-          echo "Logged in to Docker Hub successfully."
+        # This step uses a GitHub action, so no run command is included
+        # Custom logging is not applicable directly here
 
       - name: Push Docker images - Backend
         run: |
