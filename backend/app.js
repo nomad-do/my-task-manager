@@ -66,9 +66,11 @@ mongoose.connect(mongoURI, {
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-  console.log('app.js loaded successfully');
-});
+if (require.main === module) {  
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+    console.log('app.js loaded successfully');
+  });
+}
 
 module.exports = app;
