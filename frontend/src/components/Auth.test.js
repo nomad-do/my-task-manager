@@ -2,10 +2,9 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import AuthForm from './AuthForm'; 
-import axiosInstance from '../axiosInstance'; 
 
 jest.mock('../axiosInstance', () => ({
-  post: jest.fn((url, data) => {
+  post: jest.fn((url) => {
     if (url === '/auth/register') {
       return Promise.resolve({ data: 'success' });
     } else if (url === '/auth/login') {
